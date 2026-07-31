@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Phasors, Rectangular and Polar Coordinates · Radio Certification Study System</title><meta name="description" content="Read and write an impedance in both coordinate systems, plot it, and pick the form that makes a given calculation easy."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-extra/">Extra</a><span aria-hidden="true">/</span><span>Electrical Principles</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Phasors, Rectangular and Polar Coordinates</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Read and write an impedance in both coordinate systems, plot it, and pick the form that makes a given calculation easy.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">11 min read</span><a href="/radiocert/objectives/E5C/" class="chip no-underline" style="font-family: var(--font-mono)">E5C</a><span class="chip chip-quiet">Electrical Principles</span><span class="chip chip-quiet">advanced</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="two-ways-to-write-the-same-impedance">Two ways to write the same impedance</h2>
+<p>An impedance has two independent parts, so it needs two numbers. There are two
+conventional ways to supply them.</p>
+<p><strong>Rectangular:</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mi>R</mi><mo>+</mo><mi>j</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">Z = R + jX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.0715em;">Z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0572em;">j</span><span class="mord mathnormal" style="margin-right:0.0785em;">X</span></span></span></span> — a resistive part and a reactive part.</p>
+<blockquote class="pool-qa"><p class="pool-q">When using rectangular coordinates to graph the impedance of a circuit, what do
+the axes represent?</p><p class="pool-a"><span class="pool-a-text">The X axis represents the resistive component, and the Y axis represents the
+reactive component.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">Where is the impedance of a pure resistance plotted on rectangular
+coordinates?</p><p class="pool-a"><span class="pool-a-text">On the horizontal axis.</span></p></blockquote>
+<p>Zero reactance means zero on the vertical axis, so a pure resistance sits on the
+horizontal axis.</p>
+<p><strong>Polar:</strong> magnitude and angle.</p>
+<blockquote class="pool-qa"><p class="pool-q">How are impedances described in polar coordinates?</p><p class="pool-a"><span class="pool-a-text">By magnitude and phase angle.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">What coordinate system is often used to display the phase angle of a circuit
+containing resistance, inductive, and/or capacitive reactance?</p><p class="pool-a"><span class="pool-a-text">Polar coordinates</span></p></blockquote>
+<h2 id="the-j-operator-and-its-sign">The j operator, and its sign</h2>
+<p><strong>j</strong> marks the reactive part, and its sign says which kind:</p>
+<ul>
+<li><strong>+j is inductive</strong></li>
+<li><strong>−j is capacitive</strong></li>
+</ul>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following represents pure capacitive reactance of 100 ohms in
+rectangular notation?</p><p class="pool-a"><span class="pool-a-text">0 − j100.</span></p></blockquote>
+<p>No resistance, so the real part is zero; capacitive, so the sign is negative.</p>
+<blockquote class="pool-qa"><p class="pool-q">What does the impedance 50 − j25 ohms represent?</p><p class="pool-a"><span class="pool-a-text">50 ohms resistance in series with 25 ohms capacitive reactance.</span></p></blockquote>
+<p>Read it straight off: 50 resistive, 25 capacitive.</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following represents a pure inductive reactance in polar
+coordinates?</p><p class="pool-a"><span class="pool-a-text">A positive 90 degree phase angle.</span></p></blockquote>
+<p>Pure reactance means no resistive part, so the impedance lies on the vertical axis
+— at <strong>+90°</strong> for inductive and −90° for capacitive.</p>
+<h2 id="which-form-for-which-job">Which form for which job</h2>
+<p>The two forms are equivalent, and each makes a different operation easy. Knowing
+which to use is the practical skill.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Operation</th><th>Easier in</th></tr></thead><tbody><tr><td><strong>Adding</strong> impedances in series</td><td><strong>rectangular</strong> — add real parts, add imaginary parts</td></tr><tr><td><strong>Multiplying or dividing</strong></td><td><strong>polar</strong> — multiply magnitudes, add angles</td></tr><tr><td>Taking a reciprocal (impedance → admittance)</td><td><strong>polar</strong> — reciprocal magnitude, negate angle</td></tr><tr><td>Reading off R and X</td><td>rectangular</td></tr><tr><td>Reading off magnitude and phase</td><td>polar</td></tr></tbody></table>
+<p>That is why the admittance conversion in the previous lesson is stated in polar
+form: it is one step there and messy in rectangular.</p>
+<h2 id="phasor-diagrams">Phasor diagrams</h2>
+<blockquote class="pool-qa"><p class="pool-q">What kind of diagram is used to show the phase relationship between impedances
+at a given frequency?</p><p class="pool-a"><span class="pool-a-text">Phasor diagram.</span></p></blockquote>
+<p>A phasor diagram plots each impedance as a vector — length for magnitude, angle for
+phase — so a series combination becomes vector addition you can see. It is the
+picture that makes “the reactances cancel at resonance” obvious: two vectors of
+equal length pointing exactly opposite.</p>
+<p><strong>At a given frequency</strong> matters. Reactance changes with frequency, so a phasor
+diagram is a snapshot.</p>
+<h2 id="reading-figure-e5-1">Reading figure E5-1</h2>
+<p>Three pool questions ask you to locate an impedance on this figure.</p>
+<p><img src="/radiocert/figures/pool/extra-2024/E5-1.svg" alt="Pool figure E5-1"></p>
+<p>The method is mechanical:</p>
+<ol>
+<li><strong>Compute the reactance</strong> at the stated frequency —
+X_L = 2πfL or X_C = 1/(2πfC).</li>
+<li><strong>The resistance is the horizontal coordinate.</strong></li>
+<li><strong>The reactance is the vertical coordinate</strong>, positive up for inductive and
+negative down for capacitive.</li>
+<li>Find the point with roughly those coordinates.</li>
+</ol>
+<p>Nothing more subtle than that. The arithmetic is the reactance formula from the
+General track; the figure just asks you to plot the answer.</p>
+<h2 id="frequency-response-graphs">Frequency response graphs</h2>
+<blockquote class="pool-qa"><p class="pool-q">What type of Y-axis scale is most often used for graphs of circuit frequency
+response?</p><p class="pool-a"><span class="pool-a-text">Logarithmic.</span></p></blockquote>
+<p>Because response spans orders of magnitude and because decibels are logarithmic. A
+filter with 60 dB of ultimate rejection has a stopband a millionth of its passband
+in power — invisible on a linear axis, clearly readable on a logarithmic one.</p>
+<p>The mode-bandwidth figure in the Technician signals module makes the same point
+about the frequency axis.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Write “30 ohms resistance in series with 40 ohms inductive reactance” in
+rectangular form. What is its magnitude?</li>
+<li>Where does 0 + j75 plot, and what is it?</li>
+<li>You need to add two series impedances. Which coordinate form?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>30 + j40</strong>. Magnitude = √(30² + 40²) = <strong>50 ohms</strong>.</li>
+<li>On the <strong>vertical axis, above the origin</strong> — a pure inductive reactance of 75
+ohms, at +90°.</li>
+<li><strong>Rectangular</strong> — add the real parts and add the imaginary parts.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">12 questions from 2024-2028 Amateur Extra (Element 4). Drill them in <a href="/radiocert/practice/?pool=extra-2024&amp;objectives=E5C">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">E5C01 · E5C02 · E5C03 · E5C04 · E5C05 · E5C06 · E5C07 · E5C08 · E5C09 · E5C10 · E5C11 · E5C12</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> E5C</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-extra/electrical-principles/02-time-constants-and-phase/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">Time Constants and Phase Angles</span></a><a href="/radiocert/lessons/amateur-extra/electrical-principles/04-rf-effects-in-components/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">RF Effects in Real Components</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-extra/electrical-principles/03-phasors-and-coordinates" data-lesson-title="Phasors, Rectangular and Polar Coordinates" data-lesson-track="amateur-extra" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#impedance">Impedance</a></li><li><a href="/radiocert/glossary/#phase-angle-rlc">Phase angle of a series RLC circuit</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#two-ways-to-write-the-same-impedance" class="toc-link" data-depth="2">Two ways to write the same impedance</a></li><li><a href="#the-j-operator-and-its-sign" class="toc-link" data-depth="2">The j operator, and its sign</a></li><li><a href="#which-form-for-which-job" class="toc-link" data-depth="2">Which form for which job</a></li><li><a href="#phasor-diagrams" class="toc-link" data-depth="2">Phasor diagrams</a></li><li><a href="#reading-figure-e5-1" class="toc-link" data-depth="2">Reading figure E5-1</a></li><li><a href="#frequency-response-graphs" class="toc-link" data-depth="2">Frequency response graphs</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

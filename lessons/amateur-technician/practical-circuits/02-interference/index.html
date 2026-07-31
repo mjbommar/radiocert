@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Interference: Diagnosing It and Being Neighbourly About It · Radio Certification Study System</title><meta name="description" content="Tell overload from a genuine spurious emission, apply the right filter at the right end, and handle a neighbour's complaint without making it worse."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-technician/">Technician</a><span aria-hidden="true">/</span><span>Practical Circuits and Test Equipment</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Interference: Diagnosing It and Being Neighbourly About It</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Tell overload from a genuine spurious emission, apply the right filter at the right end, and handle a neighbour&#39;s complaint without making it worse.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">10 min read</span><a href="/radiocert/objectives/T7B/" class="chip no-underline" style="font-family: var(--font-mono)">T7B</a><span class="chip chip-quiet">Station Equipment</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="the-distinction-that-decides-everything">The distinction that decides everything</h2>
+<p>When a neighbour’s device misbehaves while you transmit, there are two
+possibilities and they need opposite fixes.</p>
+<p><strong>Your transmitter is emitting where it should not.</strong> Harmonics, spurious
+emissions, splatter from overdriven audio. Your problem, fixed at your station.</p>
+<p><strong>Their receiver cannot handle a strong signal that is entirely legal.</strong> This is
+called <strong>overload</strong> or <strong>front-end overload</strong>, and it is far more common.</p>
+<blockquote class="pool-qa"><p class="pool-q">What would cause a broadcast AM or FM radio to receive an amateur radio
+transmission unintentionally?</p><p class="pool-a"><span class="pool-a-text">The receiver is unable to reject strong signals outside the AM or FM band</span></p></blockquote>
+<p>A consumer receiver has almost no filtering ahead of its first amplifier. A
+legal, clean 50 W signal a few metres away is enormous by its standards, and it
+simply cannot cope. Nothing is wrong with your transmission.</p>
+<h2 id="which-end-gets-the-filter">Which end gets the filter</h2>
+<p>This follows directly from the distinction:</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following might reduce interference by an amateur station to a
+non-amateur over-the-air radio receiver?</p><p class="pool-a"><span class="pool-a-text">Block the amateur signal with a filter at the antenna input of the affected
+receiver</span></p></blockquote>
+<p>At <strong>their</strong> receiver, because that is where the problem is. A filter at your
+transmitter cannot help — it is already only transmitting in its own band, and
+that is exactly the signal their receiver is failing to reject.</p>
+<p>The reverse case, when you are the victim:</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following can reduce interference to a 2-meter band transceiver from
+a nearby commercial FM station?</p><p class="pool-a"><span class="pool-a-text">Installing a band-reject filter</span></p></blockquote>
+<p>A notch that removes the broadcast band before your receiver’s front end sees it.</p>
+<p>And for audio-frequency trouble caused by RF getting into a cable:</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following can eliminate distorted voice transmissions?</p><p class="pool-a"><span class="pool-a-text">Adding a clip-on ferrite “choke” to the microphone cable to prevent the
+transmitted signal from feeding back into the transmitter</span></p></blockquote>
+<p>RF on a microphone cable gets rectified inside the radio and comes back as
+distortion. A ferrite choke raises the cable’s impedance to RF without affecting
+audio.</p>
+<h2 id="handling-the-complaint">Handling the complaint</h2>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following actions should you take if a neighbor tells you that your
+station’s transmissions are interfering with their radio or TV reception?</p><p class="pool-a"><span class="pool-a-text">Make sure that your station is functioning properly and that it does not cause
+interference to your own radio or television when it is tuned to the same channel</span></p></blockquote>
+<p>Check your own house first. This is both good engineering and good diplomacy: it
+establishes whether the problem is yours, and it demonstrates good faith before
+any conversation about their equipment.</p>
+<blockquote class="pool-qa"><p class="pool-q">What should you do if something in a neighbor’s home is causing harmful
+interference to your amateur station?</p><p class="pool-a"><span class="pool-a-text">All these choices are correct</span><span class="pool-gloss"> — work with your neighbour to identify the
+offending device, politely inform them that the FCC rules require them to stop
+using it if it causes interference, and check your station to ensure it meets
+the standards.</span></p></blockquote>
+<p>Note the order in that answer. Identify cooperatively, mention the rules
+politely, and verify your own station. Leading with the rules is how a solvable
+problem becomes a permanent feud.</p>
+<p>For cable television specifically:</p>
+<blockquote class="pool-qa"><p class="pool-q">What should be the first step to resolve non-fiber optic cable TV interference
+caused by your amateur radio transmission?</p><p class="pool-a"><span class="pool-a-text">Be sure all TV feed line coaxial connectors are installed properly</span></p></blockquote>
+<p>Cable systems are shielded, and interference means the shield is compromised —
+usually a loose or badly-fitted connector. Fixing the connector fixes both
+directions: your signal stops getting in, and the cable system’s signal stops
+leaking out.</p>
+<h2 id="faults-on-your-side">Faults on your side</h2>
+<p><strong>Low RF output from a solid-state transmitter</strong> may be caused by <strong>high SWR</strong> —
+the protection circuit reducing power to save the finals. Check the antenna
+system before suspecting the radio.</p>
+<p><strong>Over-deviation on FM:</strong> <strong>talk farther away from the microphone.</strong> Same fix as
+before, from the other direction.</p>
+<p><strong>Audio reports through a repeater</strong> — “all these choices are correct” — can mean
+your transmitter is slightly off frequency, your batteries are low, or you are
+in a poor location. All three degrade a signal into the repeater without any
+fault in the radio itself.</p>
+<p><strong>Radio frequency interference can be caused by</strong> — again “all these choices” —
+<strong>fundamental overload, harmonics, and spurious emissions.</strong> The first is the
+receiver’s limitation, the other two are the transmitter’s, which is why
+diagnosis has to come before any fix.</p>
+<h2 id="a-diagnostic-order">A diagnostic order</h2>
+<ol>
+<li>Does it happen with your own receivers, in your own house? If yes, suspect
+your station.</li>
+<li>Does it affect only one device, or everything? One device points to overload
+in that device.</li>
+<li>Does it happen on every band you transmit on, or only one? Only one suggests a
+harmonic relationship.</li>
+<li>Does a ferrite choke on the affected device’s leads change it? That confirms
+conducted pickup rather than direct radiation.</li>
+</ol>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Your 2 metre transmission comes through a neighbour’s stereo. Where does the
+filter go, and why?</li>
+<li>Your solid-state radio suddenly makes half its rated power. First check?</li>
+<li>A neighbour’s new LED floodlight wipes out 2 metres. What is the first step?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li>At the <strong>antenna input of the affected receiver</strong>. The stereo cannot reject a
+strong out-of-band signal; your transmitter is already clean.</li>
+<li><strong>SWR.</strong> Solid-state transmitters reduce output as SWR rises, to protect the
+final transistors.</li>
+<li><strong>Work with the neighbour to identify the device</strong>, politely — and check your
+own station meets its standards while you are at it.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">11 questions from 2026-2030 Technician (Element 2). Drill them in <a href="/radiocert/practice/?pool=tech-2026&amp;objectives=T7B">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">T7B01 · T7B02 · T7B03 · T7B04 · T7B05 · T7B06 · T7B07 · T7B08 · T7B09 · T7B10 · T7B11</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> T7B</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-technician/practical-circuits/01-station-equipment/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">What Each Box in the Station Does</span></a><a href="/radiocert/lessons/amateur-technician/practical-circuits/03-test-equipment/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Test Equipment and Soldering</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-technician/practical-circuits/02-interference" data-lesson-title="Interference: Diagnosing It and Being Neighbourly About It" data-lesson-track="amateur-technician" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#swr">Standing Wave Ratio</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#the-distinction-that-decides-everything" class="toc-link" data-depth="2">The distinction that decides everything</a></li><li><a href="#which-end-gets-the-filter" class="toc-link" data-depth="2">Which end gets the filter</a></li><li><a href="#handling-the-complaint" class="toc-link" data-depth="2">Handling the complaint</a></li><li><a href="#faults-on-your-side" class="toc-link" data-depth="2">Faults on your side</a></li><li><a href="#a-diagnostic-order" class="toc-link" data-depth="2">A diagnostic order</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

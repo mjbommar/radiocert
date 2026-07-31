@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Directional Antennas · Radio Certification Study System</title><meta name="description" content="Describe a Yagi's elements and what each does, convert between dBi and dBd, and say what stacking, boom length, and matching each buy."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-general/">General</a><span aria-hidden="true">/</span><span>Antennas and Feed Lines</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Directional Antennas</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Describe a Yagi&#39;s elements and what each does, convert between dBi and dBd, and say what stacking, boom length, and matching each buy.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">10 min read</span><a href="/radiocert/objectives/G9C/" class="chip no-underline" style="font-family: var(--font-mono)">G9C</a><span class="chip chip-quiet">Antennas &amp; Feed Lines</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="anatomy-of-a-yagi">Anatomy of a Yagi</h2>
+<p>Three kinds of element on a boom:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Element</th><th>Length</th><th>Position</th></tr></thead><tbody><tr><td><strong>Reflector</strong></td><td><strong>longer</strong> than the driven element</td><td>behind</td></tr><tr><td><strong>Driven element</strong></td><td><strong>about 1/2 wavelength</strong></td><td>fed</td></tr><tr><td><strong>Director</strong></td><td><strong>shorter</strong> than the driven element</td><td>in front</td></tr></tbody></table>
+<blockquote class="pool-qa"><p class="pool-q">How do the lengths of a three-element Yagi reflector and director compare to
+that of the driven element?</p><p class="pool-a"><span class="pool-a-text">The reflector is longer, and the director is shorter.</span></p></blockquote>
+<p>A useful mnemonic: the antenna points toward the <em>short</em> end. Directors are short
+and go in the direction of transmission; the single longer reflector is behind
+you.</p>
+<p>Only the driven element is connected to anything. The others are <strong>parasitic</strong> —
+they re-radiate what they pick up, with a phase that reinforces the pattern
+forward and cancels it backward.</p>
+<h2 id="the-two-performance-numbers">The two performance numbers</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is meant by the “main lobe” of a directive antenna?</p><p class="pool-a"><span class="pool-a-text">The direction of maximum radiated field strength from the antenna.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">What does “front-to-back ratio” mean in reference to a Yagi antenna?</p><p class="pool-a"><span class="pool-a-text">The power radiated in the major lobe compared to that in the opposite
+direction.</span></p></blockquote>
+<p><strong>Gain</strong> is what you gain forward. <strong>Front-to-back ratio</strong> is how well you reject
+what is behind you. They are different properties and they trade against each
+other, which is why:</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following can be adjusted to optimize forward gain, front-to-back
+ratio, or SWR bandwidth of a Yagi antenna?</p><p class="pool-a"><span class="pool-a-text">All these choices are correct</span><span class="pool-gloss"> — the physical length of the boom, the number of
+elements, and the spacing of each element along the boom.</span></p></blockquote>
+<p>You cannot maximise all three at once. A design optimised for gain has a poorer
+front-to-back ratio and narrower bandwidth than one optimised for pattern.</p>
+<h2 id="making-it-bigger-and-making-it-wider">Making it bigger, and making it wider</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the primary effect of increasing boom length and adding directors to
+a Yagi antenna?</p><p class="pool-a"><span class="pool-a-text">Gain increases.</span></p></blockquote>
+<p>Boom length is the fundamental resource. More directors on a longer boom
+concentrate the pattern further; more elements crammed onto a short boom mostly
+add cost.</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following would increase the bandwidth of a Yagi antenna?</p><p class="pool-a"><span class="pool-a-text">Larger-diameter elements.</span></p></blockquote>
+<p>A fatter conductor has a lower Q, so it stays near resonance over a wider range.
+The same reason a fat dipole covers more of a band than a thin-wire one.</p>
+<h2 id="dbi-and-dbd">dBi and dBd</h2>
+<blockquote class="pool-qa"><p class="pool-q">How does antenna gain in dBi compare to gain stated in dBd for the same
+antenna?</p><p class="pool-a"><span class="pool-a-text">Gain in dBi is 2.15 dB higher.</span></p></blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">B</mi><mi mathvariant="normal">i</mi></mrow><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">B</mi><mi mathvariant="normal">d</mi></mrow><mo>+</mo><mn>2.15</mn></mrow><annotation encoding="application/x-tex">\mathrm{dBi} = \mathrm{dBd} + 2.15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathrm">dBi</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathrm">dBd</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.15</span></span></span></span></p>
+<p>Because a half-wave dipole itself has 2.15 dBi of gain over an isotropic
+radiator. Referencing to the dipole therefore reads 2.15 dB lower for the same
+antenna — and manufacturers naturally quote dBi.</p>
+<p><strong>Always check which reference a gain figure uses.</strong> An “8 dB” beam is 8 dBd or
+8 dBi, and those are meaningfully different antennas.</p>
+<h2 id="stacking">Stacking</h2>
+<blockquote class="pool-qa"><p class="pool-q">In free space, how does the gain of two three-element, horizontally polarized Yagi
+antennas spaced vertically 1/2 wavelength apart typically compare to the gain of a
+single three-element Yagi?</p><p class="pool-a"><span class="pool-a-text">Approximately 3 dB higher</span></p></blockquote>
+<p>Two identical antennas fed in phase double the power in the favoured direction:
+3 dB, the familiar factor of two. And the pattern changes shape:</p>
+<blockquote class="pool-qa"><p class="pool-q">What is an advantage of vertically stacking horizontally polarized Yagi
+antennas?</p><p class="pool-a"><span class="pool-a-text">It narrows the main lobe in elevation</span></p></blockquote>
+<p>Stacking vertically compresses the pattern vertically, pushing energy toward the
+horizon where distant stations are rather than up at the sky. On HF, controlling
+the elevation pattern often matters more than raw gain.</p>
+<h2 id="feeding-a-yagi">Feeding a Yagi</h2>
+<p>A Yagi’s driven element does not naturally present 50 ohms, so a matching
+arrangement is part of the design.</p>
+<blockquote class="pool-qa"><p class="pool-q">What is a beta or hairpin match?</p><p class="pool-a"><span class="pool-a-text">A shorted transmission line stub placed at the feed point of a Yagi antenna to
+provide impedance matching</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following is a characteristic of using a gamma match with a Yagi
+antenna?</p><p class="pool-a"><span class="pool-a-text">It does not require the driven element to be insulated from the boom.</span></p></blockquote>
+<p>That is a genuine mechanical advantage: a driven element bolted straight to the
+boom is stronger, simpler, and needs no insulators to fail in weather. The gamma
+match takes its feed from a point along the element instead.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Which end of a Yagi does it transmit toward, and how do you tell from the
+element lengths?</li>
+<li>An antenna is advertised at 10 dBi. What is that in dBd?</li>
+<li>You stack two identical Yagis a half wavelength apart vertically. What do you
+gain, and what changes about the pattern?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li>Toward the <strong>directors</strong>, which are <strong>shorter</strong> than the driven element. The
+single longer <strong>reflector</strong> is at the back.</li>
+<li>10 − 2.15 = <strong>7.85 dBd</strong>.</li>
+<li>About <strong>3 dB</strong> of gain, and the main lobe <strong>narrows in elevation</strong> — pushing
+energy toward the horizon.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">11 questions from 2023-2027 General (Element 3). Drill them in <a href="/radiocert/practice/?pool=gen-2023&amp;objectives=G9C">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">G9C01 · G9C02 · G9C03 · G9C04 · G9C05 · G9C07 · G9C08 · G9C09 · G9C10 · G9C11 · G9C12</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> G9C</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-general/antennas/02-dipoles-and-verticals/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">Dipoles and Verticals</span></a><a href="/radiocert/lessons/amateur-general/antennas/04-specialised-antennas/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Specialised Antennas</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-general/antennas/03-directional-antennas" data-lesson-title="Directional Antennas" data-lesson-track="amateur-general" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#antenna-gain">Antenna Gain</a></li><li><a href="/radiocert/glossary/#dipole-length">Half-wave dipole length</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#anatomy-of-a-yagi" class="toc-link" data-depth="2">Anatomy of a Yagi</a></li><li><a href="#the-two-performance-numbers" class="toc-link" data-depth="2">The two performance numbers</a></li><li><a href="#making-it-bigger-and-making-it-wider" class="toc-link" data-depth="2">Making it bigger, and making it wider</a></li><li><a href="#dbi-and-dbd" class="toc-link" data-depth="2">dBi and dBd</a></li><li><a href="#stacking" class="toc-link" data-depth="2">Stacking</a></li><li><a href="#feeding-a-yagi" class="toc-link" data-depth="2">Feeding a Yagi</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

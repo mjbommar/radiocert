@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Measuring Feed Line Loss and Finding Faults · Radio Certification Study System</title><meta name="description" content="Measure the loss in a real length of coax, locate a fault along it without cutting anything, and recognise what a bad connector looks like on a sweep."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/sdr-lab/">SDR Lab</a><span aria-hidden="true">/</span><span>Measuring Antennas</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Measuring Feed Line Loss and Finding Faults</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Measure the loss in a real length of coax, locate a fault along it without cutting anything, and recognise what a bad connector looks like on a sweep.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">12 min read</span><span class="chip chip-quiet">Antennas &amp; Feed Lines</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><aside class="card-surface mt-4 px-4 py-3 text-sm"><h2 class="text-xs font-semibold uppercase tracking-wide" style="color: var(--ink-muted)">Hardware</h2><ul class="mt-1.5 space-y-1"><li><strong>NanoVNA (or any vector network analyser)</strong><span class="chip ml-2">optional</span><span class="block" style="color: var(--ink-2)">Without it: A noise source and an SDR measure through-loss adequately; the TDR-style fault location needs a VNA or a dedicated time-domain instrument.</span></li><li><strong>A length of coax with connectors on both ends</strong><span class="block" style="color: var(--ink-2)">Without it: Any patch cable. A suspect one is more instructive than a good one.</span></li><li><strong>A 50 ohm load, a short, and an open</strong><span class="block" style="color: var(--ink-2)">Without it: The calibration kit supplied with a NanoVNA contains all three.</span></li></ul></aside><article id="lesson-body" class="prose-lesson mt-10"><h2 id="measuring-loss-two-ways">Measuring loss two ways</h2>
+<p><strong>Insertion loss (S21)</strong> — the direct measurement. Connect the coax between the
+VNA’s two ports and read S21 across the band. That number is the loss, in dB.</p>
+<p><strong>Return loss with a short (S11)</strong> — for when you only have one port, or the far
+end is up a tower:</p>
+<ol>
+<li>Put a <strong>short</strong> on the far end of the coax.</li>
+<li>Measure return loss at the near end.</li>
+<li>The signal made <strong>two trips</strong>, so <strong>one-way loss is half the measured value</strong>.</li>
+</ol>
+<p>A short at the far end is a perfect reflector, so anything missing from the
+returned signal was absorbed by the cable. If you measure 4 dB of return loss
+against a short, the cable has <strong>2 dB</strong> of one-way loss.</p>
+<p>This second method is how you check a feed line that is already installed,
+without taking anything down.</p>
+<h2 id="what-the-numbers-should-be">What the numbers should be</h2>
+<p>Manufacturer figures, per 100 feet, evaluated at three amateur frequencies from
+each maker’s own published data (Belden 8259 and 9258; Times Microwave LMR-400):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Cable</th><th>14 MHz</th><th>146 MHz</th><th>440 MHz</th><th>Velocity factor</th></tr></thead><tbody><tr><td><strong>RG-58</strong> (Belden 8259)</td><td>1.8 dB</td><td>6.7 dB</td><td>13.2 dB</td><td>0.66</td></tr><tr><td><strong>RG-8X</strong> (Belden 9258)</td><td>1.1 dB</td><td>3.8 dB</td><td>7.0 dB</td><td>0.82</td></tr><tr><td><strong>LMR-400</strong></td><td>0.46 dB</td><td>1.5 dB</td><td>2.7 dB</td><td>0.85</td></tr></tbody></table>
+<p>Read the practical consequence, not the table. <strong>At HF almost any coax is fine.
+At 440 MHz, 100 feet of RG-58 throws away almost everything</strong> — 13.2 dB leaves
+under 5% of your power, so about <strong>95% is gone as heat</strong> before it reaches the
+antenna. Put 50 W in, radiate 2.4 W.</p>
+<p>These are figures for new cable at 25 °C with a matched load. Yours will be
+worse. A run that reads 3 dB worse than the datasheet has water in it, a bad
+connector, or both.</p>
+<details>
+<summary><strong>Why loss has exactly two terms</strong> — and what each one is made of</summary>
+<p>Times Microwave publishes not just a table but the model behind it. For LMR-400,
+loss in dB per 100 feet is</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.122290</mn><mtext> </mtext><msqrt><msub><mi>f</mi><mtext>MHz</mtext></msub></msqrt><mtext>  </mtext><mo>+</mo><mtext>  </mtext><mn>0.000260</mn><mtext> </mtext><msub><mi>f</mi><mtext>MHz</mtext></msub></mrow><annotation encoding="application/x-tex">\alpha(f) = 0.122290\,\sqrt{f_{\text{MHz}}} \;+\; 0.000260\,f_{\text{MHz}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.205em;"></span><span class="mord">0.122290</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.835em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">MHz</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.795em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.205em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">0.000260</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">MHz</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>Two terms, because there are exactly two places the power goes.</p>
+<p><strong>The <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mi>f</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{f}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.205em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.835em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span><span style="top:-2.795em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.205em;"><span></span></span></span></span></span></span></span></span> term is conductor loss.</strong> At RF, current flows in a surface
+layer of thickness</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><msqrt><mfrac><mi>ρ</mi><mrow><mi>π</mi><mi>f</mi><mi>μ</mi></mrow></mfrac></msqrt></mrow><annotation encoding="application/x-tex">\delta = \sqrt{\frac{\rho}{\pi f \mu}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.84em;vertical-align:-0.7218em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1182em;"><span class="svg-align" style="top:-3.8em;"><span class="pstrut" style="height:3.8em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7475em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">π</span><span class="mord mathnormal mtight" style="margin-right:0.1076em;">f</span><span class="mord mathnormal mtight">μ</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ρ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.0782em;"><span class="pstrut" style="height:3.8em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.88em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.88em" viewBox="0 0 400000 1944" preserveAspectRatio="xMinYMin slice"><path d="M983 90
+l0 -0
+c4,-6.7,10,-10,18,-10 H400000v40
+H1013.1s-83.4,268,-264.1,840c-180.7,572,-277,876.3,-289,913c-4.7,4.7,-12.7,7,-24,7
+s-12,0,-12,0c-1.3,-3.3,-3.7,-11.7,-7,-25c-35.3,-125.3,-106.7,-373.3,-214,-744
+c-10,12,-21,25,-33,39s-32,39,-32,39c-6,-5.3,-15,-14,-27,-26s25,-30,25,-30
+c26.7,-32.7,52,-63,76,-91s52,-60,52,-60s208,722,208,722
+c56,-175.3,126.3,-397.3,211,-666c84.7,-268.7,153.8,-488.2,207.5,-658.5
+c53.7,-170.3,84.5,-266.8,92.5,-289.5z
+M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7218em;"><span></span></span></span></span></span></span></span></span></p>
+<p>so skin depth falls as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">f^{-1/2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0824em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1/2</span></span></span></span></span></span></span></span></span></span></span></span>. The effective cross-section is a shell of
+that thickness, so the resistance per unit length rises as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mi>f</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{f}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.205em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.835em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span><span style="top:-2.795em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.205em;"><span></span></span></span></span></span></span></span></span> — and
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>I</mi><mn>2</mn></msup><mi>R</mi></mrow><annotation encoding="application/x-tex">I^2R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.0077em;">R</span></span></span></span> loss rises with it. This is why a <em>fatter</em> cable wins at HF: the term
+scales with conductor circumference.</p>
+<p><strong>The linear <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span> term is dielectric loss.</strong> The insulation is a lossy capacitor;
+the power it dissipates goes as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mi>C</mi><msup><mi>V</mi><mn>2</mn></msup><mi>tan</mi><mo>⁡</mo><mi>δ</mi></mrow><annotation encoding="application/x-tex">\omega C V^2 \tan\delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">ω</span><span class="mord mathnormal" style="margin-right:0.0715em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.2222em;">V</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">tan</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0379em;">δ</span></span></span></span>, linear in frequency.
+This is why <em>foam</em> dielectric wins at UHF — you are replacing polyethylene with
+mostly air, and air’s loss tangent is essentially zero.</p>
+<p><strong>The crossover is the useful part.</strong> Set the two terms equal:</p>
+<span class="katex-error" title="ParseError: KaTeX parse error: Can&#x27;t use function &#x27;$&#x27; in math mode at position 107: …000 \text{ MHz}$̲$
+
+For LMR-400 …" style="color:#cc0000">\sqrt{f} = \frac{0.122290}{0.000260} \approx 470
+\quad\Longrightarrow\quad f \approx 221{,}000 \text{ MHz}$$
+
+For LMR-400 the crossover is at 221 GHz — far above anything you will use, so
+**conductor loss dominates across the entire amateur spectrum**. That is a
+genuinely useful conclusion: at every frequency you care about, loss goes as
+$\sqrt{f}$ and the fix is a bigger conductor, not a better dielectric. The
+dielectric term only matters for the last few percent.
+
+Check it against the table: quadrupling frequency should roughly double loss.
+150 MHz → 1.5 dB; 600 MHz should be ≈ 3.0, and interpolating the published
+450 MHz (2.7) and 900 MHz (3.9) points gives ≈ 3.1. It holds.
+
+*The model above reproduces every point in Times' published table to within
+0.05 dB/100 ft — verified in `scripts/tests/test_rf_numbers.py`.*
+
+&#x3C;/details>
+
+## Locating a fault without cutting
+
+A VNA in **time-domain (TDR) mode** turns a frequency sweep into a picture of the
+cable's length, showing where impedance changes. A fault reflects, and the
+reflection's delay gives its distance.
+
+The arithmetic is the **velocity factor** from the feed-lines lesson:
+
+$$d = \frac{v_f \times c \times t}{2}$$
+
+The factor of two is there because the pulse travels out and back.
+
+**Velocity factors worth knowing:** solid polyethylene coax (RG-58, RG-8) is
+**0.66**; foam dielectric (LMR-400, RG-8X) is about **0.78–0.85**. Use the wrong
+one and your distance is off by 20%.
+
+**What a fault looks like:**
+
+| Reflection | Cause |
+|---|---|
+| **Open** (positive spike, high impedance) | broken centre conductor, disconnected connector |
+| **Short** (negative spike, low impedance) | crushed cable, braid touching centre |
+| **Small bump partway along** | connector, adapter, or a kink |
+| **Bump at the far end that should not be there** | the antenna is not matched — which is the same measurement as lesson 1 |
+
+The everyday use is unglamorous and valuable: sweep a 100 foot run, see a bump at
+40 feet, and know the fault is at the barrel connector you buried 40 feet out —
+without pulling anything down.
+
+## What a bad connector looks like
+
+This is the failure you will actually meet, so it is worth being able to
+recognise.
+
+- **A small, sharp discontinuity** at the connector's position in TDR mode.
+- **Ripple in the SWR sweep** — a periodic wobble across frequency rather than a
+  smooth curve. Two mismatches separated by a length of line interfere
+  constructively and destructively as frequency changes, and the ripple's period
+  tells you their spacing.
+- **Loss that changes when you wiggle it.** Sweep continuously and flex the
+  connector. A trace that jumps has found your fault.
+
+**Water is the usual culprit.** It wicks into braid by capillary action and can
+travel many feet from the entry point, so the damage is often nowhere near the
+visible problem. Once inside, loss rises and keeps rising.
+
+## The exercise
+
+1. Measure a **known-good patch cable**. Record loss at 14, 146, and 440 MHz.
+2. Measure your **actual station feed line** the same way. Compare with the
+   datasheet.
+3. Put a **short** on the far end and confirm the two-way method gives twice the
+   one-way loss.
+4. Run **TDR** and identify every discontinuity. Account for each one — every
+   connector should appear, and anything you cannot explain deserves
+   investigation.
+
+Do this once and record the numbers. When performance degrades a year from now,
+you will have a baseline, and comparing against it is far quicker than
+diagnosing from scratch.
+
+## Check yourself
+
+1. You short the far end of a run and measure 5 dB of return loss. What is the
+   one-way loss?
+2. TDR shows a reflection at 30 ns on RG-58. How far away is the fault?
+3. Your SWR sweep ripples up and down across the band instead of curving
+   smoothly. What does that suggest?
+
+&#x3C;details>
+&#x3C;summary>Answers&#x3C;/summary>
+
+1. **2.5 dB.** The signal traversed the cable twice.
+2. $d = \frac{0.66 \times 3 \times 10^{8} \times 30 \times 10^{-9}}{2} \approx
+   3.0$ m — about **10 feet**. The velocity factor and the factor of two both
+   matter.
+3. **Two mismatches separated along the line** — typically a bad connector plus
+   the antenna. Their interference alternates with frequency, and the ripple's
+   period indicates the spacing.
+
+&#x3C;/details></span></details></article><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">source</span> times-lmr400<span> — LMR-400 attenuation figures</span></li><li><span class="chip">source</span> belden-8259<span> — RG-58 attenuation figures</span></li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/sdr-lab/antenna-lab/01-finding-resonance/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">Finding Where an Antenna Is Actually Resonant</span></a><a href="/radiocert/tracks/sdr-lab/" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">End of module</span><span class="font-medium">Back to SDR Lab</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="sdr-lab/antenna-lab/02-feed-lines-and-faults" data-lesson-title="Measuring Feed Line Loss and Finding Faults" data-lesson-track="sdr-lab" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#feed-line">Feed Line</a></li><li><a href="/radiocert/glossary/#velocity-factor">Velocity Factor</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#measuring-loss-two-ways" class="toc-link" data-depth="2">Measuring loss two ways</a></li><li><a href="#what-the-numbers-should-be" class="toc-link" data-depth="2">What the numbers should be</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

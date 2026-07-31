@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Amplifier Classes, Oscillators, and Digital Logic · Radio Certification Study System</title><meta name="description" content="Match an amplifier class to a mode, compute amplifier efficiency, say what makes an oscillator oscillate, and read the basic digital building blocks."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-general/">General</a><span aria-hidden="true">/</span><span>Components and Circuits</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Amplifier Classes, Oscillators, and Digital Logic</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Match an amplifier class to a mode, compute amplifier efficiency, say what makes an oscillator oscillate, and read the basic digital building blocks.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">10 min read</span><a href="/radiocert/objectives/G7B/" class="chip no-underline" style="font-family: var(--font-mono)">G7B</a><span class="chip chip-quiet">Components &amp; Circuits</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="amplifier-classes">Amplifier classes</h2>
+<p>The class describes how much of the input cycle the device conducts for, and that
+single choice sets both efficiency and linearity.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Class</th><th>Conducts for</th><th>Efficiency</th><th>Linearity</th></tr></thead><tbody><tr><td><strong>A</strong></td><td><strong>100%</strong> of the cycle</td><td>lowest</td><td>best</td></tr><tr><td>AB</td><td>more than half</td><td>moderate</td><td>good</td></tr><tr><td>B</td><td>half the cycle</td><td>better</td><td>fair</td></tr><tr><td><strong>C</strong></td><td>less than half</td><td><strong>highest</strong></td><td>worst</td></tr></tbody></table>
+<blockquote class="pool-qa"><p class="pool-q">In a Class A amplifier, what percentage of the time does the amplifying device
+conduct?</p><p class="pool-a"><span class="pool-a-text">100%.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">Which of these classes of amplifiers has the highest efficiency?</p><p class="pool-a"><span class="pool-a-text">Class C.</span></p></blockquote>
+<p>The trade-off is direct and unavoidable, and it decides which modes each class can
+amplify:</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following describes a linear amplifier?</p><p class="pool-a"><span class="pool-a-text">An amplifier in which the output preserves the input waveform.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">For which of the following modes is a Class C power stage appropriate for
+amplifying a modulated signal?</p><p class="pool-a"><span class="pool-a-text">FM.</span></p></blockquote>
+<p><strong>FM has constant amplitude</strong>, so distorting the amplitude does not damage the
+information — you may use an efficient, non-linear Class C stage. <strong>SSB carries its
+information in amplitude</strong>, so it needs a <strong>linear</strong> amplifier (A or AB) and pays
+for it in efficiency.</p>
+<p>This is why an FM-only VHF amplifier can be small and efficient while an HF SSB
+amplifier of the same output runs hot.</p>
+<h2 id="efficiency">Efficiency</h2>
+<blockquote class="pool-qa"><p class="pool-q">How is the efficiency of an RF power amplifier determined?</p><p class="pool-a"><span class="pool-a-text">Divide the RF output power by the DC input power.</span></p></blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mfrac><msub><mi>P</mi><mrow><mi>R</mi><mi>F</mi><mtext> </mtext><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><msub><mi>P</mi><mrow><mi>D</mi><mi>C</mi><mtext> </mtext><mi>i</mi><mi>n</mi></mrow></msub></mfrac></mrow><annotation encoding="application/x-tex">\eta = \frac{P_{RF\,out}}{P_{DC\,in}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">η</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3339em;vertical-align:-0.4453em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8886em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em;">D</span><span class="mord mathnormal mtight" style="margin-right:0.0715em;">C</span><span class="mspace mtight" style="margin-right:0.2453em;"></span><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4103em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1389em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0077em;">R</span><span class="mord mathnormal mtight" style="margin-right:0.1389em;">F</span><span class="mspace mtight" style="margin-right:0.2453em;"></span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4453em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>A 100 W output amplifier drawing 200 W of DC is 50% efficient — and the missing
+100 W is heat, which is why the heat sink is the size it is.</p>
+<h2 id="neutralisation">Neutralisation</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the purpose of neutralizing an amplifier?</p><p class="pool-a"><span class="pool-a-text">To eliminate self-oscillations.</span></p></blockquote>
+<p>Stray capacitance between an amplifier’s output and its input feeds some output
+back to the input. With enough gain and the right phase, that feedback sustains
+itself and the amplifier oscillates — producing a signal of its own, on a frequency
+of its choosing, that you did not intend to transmit.</p>
+<p>Neutralisation injects a deliberate, opposite-phase feedback that cancels the
+accidental one. Note the connection to the previous lesson: a <strong>screen grid</strong>
+solves the same problem by construction, reducing the grid-to-plate capacitance
+that causes it.</p>
+<h2 id="oscillators">Oscillators</h2>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following are basic components of a sine wave oscillator?</p><p class="pool-a"><span class="pool-a-text">A filter and an amplifier operating in a feedback loop.</span></p></blockquote>
+<p>That is the general recipe, and it is the same mechanism neutralisation exists to
+<em>prevent</em>: gain plus in-phase feedback. An oscillator is a deliberate
+self-oscillation, with a filter to decide the frequency.</p>
+<blockquote class="pool-qa"><p class="pool-q">What determines the frequency of an LC oscillator?</p><p class="pool-a"><span class="pool-a-text">The inductance and capacitance in the tank circuit.</span></p></blockquote>
+<p>The tank is the filter, and its resonant frequency — from the formula in the
+electrical principles lesson — is where the loop’s phase condition is satisfied.</p>
+<h2 id="digital-building-blocks">Digital building blocks</h2>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following describes the function of a two-input AND gate?</p><p class="pool-a"><span class="pool-a-text">Output is high only when both inputs are high.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">How many states does a 3-bit binary counter have?</p><p class="pool-a"><span class="pool-a-text">8.</span></p></blockquote>
+<p>2³ = 8. An n-bit counter has 2ⁿ states — the same arithmetic as the decibel
+doublings, in a different setting.</p>
+<blockquote class="pool-qa"><p class="pool-q">What is a shift register?</p><p class="pool-a"><span class="pool-a-text">A clocked array of circuits that passes data in steps along the array.</span></p></blockquote>
+<p>Each clock pulse moves every bit one place along. It is how serial data becomes
+parallel and back, and how digital delay lines work.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>You want to amplify an SSB signal. Which classes may you use, and why not
+Class C?</li>
+<li>Your amplifier draws 300 W of DC and produces 180 W of RF. Efficiency?</li>
+<li>An amplifier produces a signal with no input. What is happening and what is the
+cure?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>Class A or AB</strong> — a <strong>linear</strong> amplifier that preserves the input waveform.
+SSB carries information in amplitude, and Class C destroys it.</li>
+<li>180 / 300 = <strong>60%</strong>. The remaining 120 W is heat.</li>
+<li><strong>Self-oscillation</strong> from stray output-to-input feedback. The cure is
+<strong>neutralisation</strong>.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">11 questions from 2023-2027 General (Element 3). Drill them in <a href="/radiocert/practice/?pool=gen-2023&amp;objectives=G7B">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">G7B01 · G7B02 · G7B03 · G7B04 · G7B05 · G7B06 · G7B07 · G7B08 · G7B09 · G7B10 · G7B11</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> G7B</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-general/components-and-circuits/03-power-supplies/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">Power Supplies and Schematic Symbols</span></a><a href="/radiocert/lessons/amateur-general/components-and-circuits/05-transceiver-design-and-dsp/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Transceiver Design, Filters, and DSP</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-general/components-and-circuits/04-amplifiers-and-digital" data-lesson-title="Amplifier Classes, Oscillators, and Digital Logic" data-lesson-track="amateur-general" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#resonance">Resonance</a></li><li><a href="/radiocert/glossary/#power-law">DC power law</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#amplifier-classes" class="toc-link" data-depth="2">Amplifier classes</a></li><li><a href="#efficiency" class="toc-link" data-depth="2">Efficiency</a></li><li><a href="#neutralisation" class="toc-link" data-depth="2">Neutralisation</a></li><li><a href="#oscillators" class="toc-link" data-depth="2">Oscillators</a></li><li><a href="#digital-building-blocks" class="toc-link" data-depth="2">Digital building blocks</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

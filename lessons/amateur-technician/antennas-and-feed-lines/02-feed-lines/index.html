@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Feed Lines, Connectors, and SWR · Radio Certification Study System</title><meta name="description" content="Choose a coax for a job, pick the right connector for the frequency, and read an SWR meter without drawing the wrong conclusion from it."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-technician/">Technician</a><span aria-hidden="true">/</span><span>Antennas and Feed Lines</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Feed Lines, Connectors, and SWR</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Choose a coax for a job, pick the right connector for the frequency, and read an SWR meter without drawing the wrong conclusion from it.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">11 min read</span><a href="/radiocert/objectives/T9B/" class="chip no-underline" style="font-family: var(--font-mono)">T9B</a><span class="chip chip-quiet">Antennas &amp; Feed Lines</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="why-coax-and-why-50-ohms">Why coax, and why 50 ohms</h2>
+<blockquote class="pool-qa"><p class="pool-q">Why is coaxial cable the most common feed line for amateur radio antenna
+systems?</p><p class="pool-a"><span class="pool-a-text">It is easy to use and requires few special installation considerations.</span></p></blockquote>
+<p>Coax is shielded, so it can be run along metal, through walls, and beside other
+cables without picking up or radiating much. Open-wire line has lower loss and
+demands to be kept clear of everything — including you.</p>
+<blockquote class="pool-qa"><p class="pool-q">What is the most common impedance of coaxial cables used in amateur radio?</p><p class="pool-a"><span class="pool-a-text">50 ohms.</span></p></blockquote>
+<p>Fifty is a compromise between the impedance of lowest loss and the impedance of
+highest power handling in air-dielectric coax. Its real value is that everyone
+agreed: radios, antennas, meters, and cables all assume it.</p>
+<h2 id="loss">Loss</h2>
+<p>Three facts, in the order they matter.</p>
+<p><strong>Loss rises with frequency.</strong></p>
+<blockquote class="pool-qa"><p class="pool-q">What happens as the frequency of a signal in coaxial cable is increased?</p><p class="pool-a"><span class="pool-a-text">The loss increases.</span></p></blockquote>
+<p>A run of RG-58 that costs you a fraction of a decibel on 40 metres costs
+several decibels at 440 MHz. Feed-line choice barely matters on HF and matters
+enormously at UHF.</p>
+<p><strong>Thicker is better.</strong></p>
+<blockquote class="pool-qa"><p class="pool-q">What is the electrical difference between RG-58 and RG-213 coaxial cable?</p><p class="pool-a"><span class="pool-a-text">RG-213 cable has less loss at a given frequency.</span></p></blockquote>
+<p>Same 50 ohms, same job, bigger conductor and more dielectric. RG-58 is thin,
+flexible, cheap, and lossy; RG-213 is thick, stiff, and much better. For a UHF
+run of any length, use the thick one.</p>
+<p><strong>The lowest-loss line is air-insulated hardline</strong> — a rigid or semi-rigid cable
+with mostly air as the dielectric. Commercial installations use it; hams find
+surplus lengths of it and treasure them.</p>
+<p><strong>Sources of loss</strong> — the pool answers “all these choices are correct” — are
+conductor resistance, dielectric losses, and radiation from the line itself.</p>
+<h2 id="connectors">Connectors</h2>
+<p><strong>PL-259</strong> — the familiar silver barrel, sometimes called a UHF connector, which
+is a misnomer. <strong>They are commonly used at HF and VHF frequencies.</strong> The design
+is not a constant-impedance connector and it degrades above a few hundred
+megahertz.</p>
+<p><strong>Type N</strong> — <strong>the most suitable RF connector for frequencies above 400 MHz.</strong>
+Constant impedance, weatherproof when assembled properly, and the right choice
+for 70 centimetres and above.</p>
+<p><strong>Everything outdoors needs weather protection.</strong> The pool asks which connectors
+should be carefully taped when used outdoors and answers “all these choices are
+correct”. Water in a coaxial cable wicks along the braid, ruins the dielectric,
+and raises loss permanently. Sealing is not optional and it is not glamorous.</p>
+<h2 id="swr">SWR</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is standing wave ratio (SWR)?</p><p class="pool-a"><span class="pool-a-text">A measure of how well a load is matched to a transmission line.</span></p></blockquote>
+<p>Not a measure of how well the antenna radiates. Not a measure of how far you
+will get. A measure of <strong>match</strong>.</p>
+<figure class="lesson-figure"><img src="/radiocert/figures/swr-reflected-power.svg" alt="Percentage of forward power reflected plotted against standing wave ratio from 1 to 6. The curve rises from zero percent at 1 to 1, through 4 percent at 1.5 to 1, 11 percent at 2 to 1, and 25 percent at 3 to 1, reaching about 51 percent at 6 to 1. Markers label the common readings." loading="lazy" decoding="async" data-theme-figure="light"><img src="/radiocert/figures/swr-reflected-power-dark.svg" alt="Percentage of forward power reflected plotted against standing wave ratio from 1 to 6. The curve rises from zero percent at 1 to 1, through 4 percent at 1.5 to 1, 11 percent at 2 to 1, and 25 percent at 3 to 1, reaching about 51 percent at 6 to 1. Markers label the common readings." loading="lazy" decoding="async" data-theme-figure="dark"><figcaption><strong>SWR and the power it sends back.</strong> Reflected power = ((SWR-1)/(SWR+1))^2. A 2:1 match sends about 11% of the power back, which is why 2:1 is a working limit rather than a disaster: the through loss is only about 0.5 dB, barely a tenth of an S-unit. The real costs are what reflected power does to a solid-state final and how it multiplies loss in an already-lossy feed line.</figcaption></figure>
+<p>The number to carry: <strong>2:1 sends about 11% of the power back</strong>, which is roughly
+half a decibel of through loss. That is why 2:1 is a working limit rather than a
+crisis. What actually suffers is the transmitter — a solid-state final folds
+back its power when it sees reflected energy — and a lossy feed line, where the
+reflected wave traverses the loss a second time.</p>
+<h2 id="diagnosing-with-swr">Diagnosing with SWR</h2>
+<blockquote class="pool-qa"><p class="pool-q">What can cause erratic changes in SWR?</p><p class="pool-a"><span class="pool-a-text">Loose connection in the antenna or feed line</span></p></blockquote>
+<p><em>Erratic</em> is the key word. A steady high SWR is a mismatch — wrong length, wrong
+antenna, wrong band. An SWR that jumps around as you move the coax, or changes
+with wind or rain, is a mechanical fault. Check connectors first; they fail more
+often than antennas do.</p>
+<p>Two more readings worth interpreting:</p>
+<ul>
+<li><strong>SWR that rises steadily over months</strong> usually means water ingress.</li>
+<li><strong>SWR that looks suspiciously perfect on a long, old run</strong> may be line loss
+attenuating the reflection. A dead-flat 1:1 across an entire band is a warning,
+not a triumph.</li>
+</ul>
+<h2 id="antenna-tuners">Antenna tuners</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the major function of an antenna tuner (antenna coupler)?</p><p class="pool-a"><span class="pool-a-text">It matches the antenna system impedance to the transceiver’s output
+impedance.</span></p></blockquote>
+<p>Read what that does <em>not</em> say. It matches at the tuner. The standing wave
+between the tuner and the antenna is exactly what it was, and so is the loss it
+causes in the feed line.</p>
+<p>A tuner makes the transmitter happy, which is genuinely useful — it stops the
+final folding back and lets you operate. It does not fix the antenna, it does
+not recover the loss, and calling it an “antenna tuner” has misled generations.
+“Transmatch” or “coupler” is the more honest name.</p>
+<h2 id="choosing-in-practice">Choosing, in practice</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Situation</th><th>Choice</th></tr></thead><tbody><tr><td>Short HF run</td><td>RG-58 is adequate</td></tr><tr><td>Any HF run over ~50 feet</td><td>RG-213 or better</td></tr><tr><td>VHF, any meaningful length</td><td>RG-213 minimum</td></tr><tr><td>UHF</td><td>the best line you can afford; length hurts</td></tr><tr><td>Above 400 MHz</td><td>Type N connectors</td></tr><tr><td>HF and VHF</td><td>PL-259 is fine</td></tr><tr><td>Anything outdoors</td><td>seal it properly</td></tr></tbody></table>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Your 70 cm SWR is fine but signals are weak both ways. What do you suspect?</li>
+<li>SWR jumps when you flex the coax at the antenna. Diagnosis?</li>
+<li>You add a tuner and SWR at the radio drops to 1:1. What has improved, and
+what has not?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>Feed-line loss</strong> — likely thin cable or a long run at UHF, possibly water
+ingress. A good SWR with poor performance is the classic signature of a lossy
+line.</li>
+<li>A <strong>loose connection</strong> in the antenna or feed line. Erratic SWR is
+mechanical.</li>
+<li>The <strong>transmitter</strong> now sees a matched load and will deliver full power. The
+mismatch beyond the tuner, and the feed-line loss it causes, are unchanged.</li>
+</ol>
+</details></article><section class="mt-12" aria-labelledby="teaches-heading"><h2 id="teaches-heading" class="text-lg font-semibold tracking-tight">What this lesson adds to the graph</h2><ul class="mt-3 flex flex-wrap gap-2"><li><a href="/radiocert/glossary/#feed-line" class="chip no-underline"><span style="color: var(--ink-muted)">term</span> Feed Line</a></li><li><a href="/radiocert/glossary/#characteristic-impedance" class="chip no-underline"><span style="color: var(--ink-muted)">term</span> Characteristic Impedance</a></li><li><a href="/radiocert/glossary/#swr" class="chip no-underline"><span style="color: var(--ink-muted)">term</span> Standing Wave Ratio</a></li></ul></section><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">12 questions from 2026-2030 Technician (Element 2). Drill them in <a href="/radiocert/practice/?pool=tech-2026&amp;objectives=T9B">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">T9B01 · T9B02 · T9B03 · T9B04 · T9B05 · T9B06 · T9B07 · T9B08 · T9B09 · T9B10 · T9B11 · T9B12</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> T9B</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-technician/antennas-and-feed-lines/01-antennas/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">Antennas: Polarisation, Length, and Gain</span></a><a href="/radiocert/tracks/amateur-technician/" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">End of module</span><span class="font-medium">Back to Technician</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-technician/antennas-and-feed-lines/02-feed-lines" data-lesson-title="Feed Lines, Connectors, and SWR" data-lesson-track="amateur-technician" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#impedance-matching">Power transfers best when impedances match</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#why-coax-and-why-50-ohms" class="toc-link" data-depth="2">Why coax, and why 50 ohms</a></li><li><a href="#loss" class="toc-link" data-depth="2">Loss</a></li><li><a href="#connectors" class="toc-link" data-depth="2">Connectors</a></li><li><a href="#swr" class="toc-link" data-depth="2">SWR</a></li><li><a href="#diagnosing-with-swr" class="toc-link" data-depth="2">Diagnosing with SWR</a></li><li><a href="#antenna-tuners" class="toc-link" data-depth="2">Antenna tuners</a></li><li><a href="#choosing-in-practice" class="toc-link" data-depth="2">Choosing, in practice</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

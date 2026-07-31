@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Digital Operating on HF · Radio Certification Study System</title><meta name="description" content="Set the right sideband and frequency for each digital mode, keep FT8's clock right, and diagnose a signal that will not decode."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-general/">General</a><span aria-hidden="true">/</span><span>Operating Procedures</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Digital Operating on HF</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Set the right sideband and frequency for each digital mode, keep FT8&#39;s clock right, and diagnose a signal that will not decode.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">11 min read</span><a href="/radiocert/objectives/G2E/" class="chip no-underline" style="font-family: var(--font-mono)">G2E</a><span class="chip chip-quiet">Digital &amp; Networked Modes</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="sideband-by-mode">Sideband, by mode</h2>
+<p>Two rules, and they are different — which is exactly why the pool asks both.</p>
+<blockquote class="pool-qa"><p class="pool-q">Which mode is normally used when sending RTTY signals via AFSK with an SSB
+transmitter?</p><p class="pool-a"><span class="pool-a-text">LSB.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">What is the standard sideband for JT65, JT9, FT4, or FT8 digital signal when using
+AFSK?</p><p class="pool-a"><span class="pool-a-text">USB</span></p></blockquote>
+<p><strong>RTTY uses LSB. The WSJT-X family uses USB.</strong> There is no unifying principle;
+they are separate conventions from separate eras. Get it wrong and your signal
+appears mirrored in frequency and nobody decodes it.</p>
+<h2 id="where-the-modes-live">Where the modes live</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Mode</th><th>Location</th></tr></thead><tbody><tr><td>Digital generally, 20 m</td><td><strong>14.070 – 14.100 MHz</strong></td></tr><tr><td><strong>FT8, 20 m</strong></td><td><strong>approximately 14.074 – 14.077 MHz</strong></td></tr><tr><td>RTTY shift</td><td><strong>170 Hz</strong> — the most common amateur HF figure</td></tr></tbody></table>
+<p>The FT8 slice is tiny — 3 kHz carrying dozens of simultaneous signals at 50 Hz
+each, which is the whole point of the mode’s design.</p>
+<h2 id="ft8s-clock-requirement">FT8’s clock requirement</h2>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following is required when using FT8?</p><p class="pool-a"><span class="pool-a-text">Computer time accurate to within approximately 1 second.</span></p></blockquote>
+<p>FT8 transmits in synchronised 15-second slots and the decoder relies on knowing
+when each began. More than about a second out and nothing decodes — in either
+direction, so you appear to be transmitting into a void.</p>
+<p>Run NTP. This is the first thing to check when FT8 stops working, and it is
+routinely the answer.</p>
+<p>And the etiquette that follows from the slot structure:</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following is good practice when choosing a transmitting frequency to
+answer a station calling CQ using FT8?</p><p class="pool-a"><span class="pool-a-text">Find a clear frequency during the alternate time slot to the calling station</span></p></blockquote>
+<p>Because transmissions alternate, the frequency the caller uses is free while they
+are receiving. Answering in a clear spot during the opposite slot avoids two
+stations landing on each other.</p>
+<h2 id="winlink-and-its-protocols">Winlink and its protocols</h2>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following describes Winlink?</p><p class="pool-a"><span class="pool-a-text">All these choices are correct</span><span class="pool-gloss"> — a set of standards and network servers for
+exchanging email over radio, a system to exchange email between amateur and
+internet addresses, and a system that provides text messaging over amateur
+radio.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">What is another name for a Winlink Remote Message Server?</p><p class="pool-a"><span class="pool-a-text">Gateway.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">What is VARA?</p><p class="pool-a"><span class="pool-a-text">A digital protocol used with Winlink.</span></p></blockquote>
+<p>VARA and PACTOR are the two ARQ protocols that carry Winlink traffic on HF. Both
+are connected, point-to-point, error-corrected links.</p>
+<blockquote class="pool-qa"><p class="pool-q">How do you join a contact between two stations using the PACTOR protocol?</p><p class="pool-a"><span class="pool-a-text">Joining an existing contact is not possible, PACTOR connections are limited to two
+stations</span></p></blockquote>
+<p>Unlike a CW or SSB contact, there is nothing to break into. A PACTOR or VARA link
+is a negotiated connection between exactly two stations.</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following is a way to establish contact with a digital messaging
+system gateway station?</p><p class="pool-a"><span class="pool-a-text">Transmit a connect message on the station’s published frequency.</span></p></blockquote>
+<h2 id="interference-on-an-arq-link">Interference on an ARQ link</h2>
+<blockquote class="pool-qa"><p class="pool-q">What symptoms may result from other signals interfering with a PACTOR or VARA
+transmission?</p><p class="pool-a"><span class="pool-a-text">All these choices are correct</span><span class="pool-gloss"> — frequent retries or timeouts, long pauses in
+message transmission, and failure to establish a connection.</span></p></blockquote>
+<p>All three are the same underlying event: ARQ detecting errors and asking again.
+Interference does not corrupt the message — the protocol will not deliver corrupt
+data — it slows the link down and eventually drops it.</p>
+<h2 id="aredn">AREDN</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the primary purpose of an Amateur Radio Emergency Data Network (AREDN)
+mesh network?</p><p class="pool-a"><span class="pool-a-text">To provide high-speed data services during an emergency or community event</span></p></blockquote>
+<p>The mesh networking from the Technician track, organised as a deployable network:
+repurposed Wi-Fi hardware on amateur frequencies, self-healing, carrying video,
+file transfer, and messaging at speeds no HF mode approaches.</p>
+<h2 id="when-nothing-decodes">When nothing decodes</h2>
+<blockquote class="pool-qa"><p class="pool-q">What could be wrong if you cannot decode an RTTY or other FSK signal even
+though it is apparently tuned in properly?</p><p class="pool-a"><span class="pool-a-text">All these choices are correct</span><span class="pool-gloss"> — the mark and space frequencies may be
+reversed, you may have selected the wrong baud rate, or you may be listening on
+the wrong sideband.</span></p></blockquote>
+<p>Three failures with one symptom, and the diagnostic order that resolves them:</p>
+<ol>
+<li><strong>Sideband.</strong> LSB for RTTY, USB for the WSJT-X family. Try the other one — it
+is one click and it fixes this more often than anything else.</li>
+<li><strong>Mark/space reversed.</strong> Most software has a “reverse” switch, which is the same
+fix from the other direction.</li>
+<li><strong>Baud rate and shift.</strong> 45.45 baud with 170 Hz shift is standard amateur RTTY.</li>
+</ol>
+<p>For FT8 specifically, add a fourth: <strong>check the clock.</strong></p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>You are set up for RTTY on 14.080 MHz and hear signals but decode nothing. First
+thing to try?</li>
+<li>FT8 shows plenty of signals on the waterfall and decodes none of them. Likely
+cause?</li>
+<li>Two stations are exchanging a Winlink message via PACTOR. Can you join?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>The other sideband.</strong> RTTY is LSB by convention; if it was left on USB, mark
+and space are reversed.</li>
+<li><strong>Computer clock</strong> more than about a second out. FT8 needs accurate time to
+locate the 15-second slots.</li>
+<li><strong>No.</strong> PACTOR connections are point-to-point; there is no contact to join.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">15 questions from 2023-2027 General (Element 3). Drill them in <a href="/radiocert/practice/?pool=gen-2023&amp;objectives=G2E">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">G2E01 · G2E02 · G2E03 · G2E04 · G2E05 · G2E06 · G2E07 · G2E08 · G2E09 · G2E10 · G2E11 · G2E12 · G2E13 · G2E14 · G2E15</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> G2E</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-general/operating/04-monitoring-and-hf-practice/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">The Volunteer Monitor Program and HF Practice</span></a><a href="/radiocert/tracks/amateur-general/" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">End of module</span><span class="font-medium">Back to General</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-general/operating/05-digital-operating" data-lesson-title="Digital Operating on HF" data-lesson-track="amateur-general" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#frequency">Frequency</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#sideband-by-mode" class="toc-link" data-depth="2">Sideband, by mode</a></li><li><a href="#where-the-modes-live" class="toc-link" data-depth="2">Where the modes live</a></li><li><a href="#ft8s-clock-requirement" class="toc-link" data-depth="2">FT8’s clock requirement</a></li><li><a href="#winlink-and-its-protocols" class="toc-link" data-depth="2">Winlink and its protocols</a></li><li><a href="#interference-on-an-arq-link" class="toc-link" data-depth="2">Interference on an ARQ link</a></li><li><a href="#aredn" class="toc-link" data-depth="2">AREDN</a></li><li><a href="#when-nothing-decodes" class="toc-link" data-depth="2">When nothing decodes</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

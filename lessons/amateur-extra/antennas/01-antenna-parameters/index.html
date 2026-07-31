@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Antenna Parameters, Computed · Radio Certification Study System</title><meta name="description" content="Compute ERP and EIRP from a station budget, convert between dBi and dBd, and say what antenna efficiency and ground gain actually measure."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-extra/">Extra</a><span aria-hidden="true">/</span><span>Antennas and Transmission Lines</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Antenna Parameters, Computed</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Compute ERP and EIRP from a station budget, convert between dBi and dBd, and say what antenna efficiency and ground gain actually measure.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">14 min read</span><a href="/radiocert/objectives/E9A/" class="chip no-underline" style="font-family: var(--font-mono)">E9A</a><span class="chip chip-quiet">Antennas &amp; Feed Lines</span><span class="chip chip-quiet">advanced</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="the-reference-antennas">The reference antennas</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is an isotropic radiator?</p><p class="pool-a"><span class="pool-a-text">A hypothetical, lossless antenna having equal radiation intensity in all
+directions used as a reference for antenna gain</span></p></blockquote>
+<p><strong>Hypothetical</strong> — it cannot exist, which is exactly why it is useful as a
+reference. Every direction equal, no losses, a perfect sphere of radiation.</p>
+<p>Two references, and the 2.15 dB between them:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">B</mi><mi mathvariant="normal">i</mi></mrow><mo>=</mo><mrow><mi mathvariant="normal">d</mi><mi mathvariant="normal">B</mi><mi mathvariant="normal">d</mi></mrow><mo>+</mo><mn>2.15</mn></mrow><annotation encoding="application/x-tex">\mathrm{dBi} = \mathrm{dBd} + 2.15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord"><span class="mord mathrm">dBi</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathrm">dBd</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.15</span></span></span></span></p>
+<blockquote class="pool-qa"><p class="pool-q">How much gain does an antenna have compared to a half-wavelength dipole if it
+has 6 dB gain over an isotropic radiator?</p><p class="pool-a"><span class="pool-a-text">3.85 dB.</span></p></blockquote>
+<p>6 − 2.15 = 3.85 dBd. The dipole itself has 2.15 dBi, so referencing to it always
+reads 2.15 dB lower.</p>
+<details>
+<summary><strong>Where 2.15 comes from</strong> — one integral, and 73 ohms falls out of it too</summary>
+<p>The 2.15 is not a convention or a measurement. It is the directivity of a
+half-wave dipole, and it is computable in closed form.</p>
+<p>A half-wave dipole carries a standing current <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi>I</mi><mn>0</mn></msub><mi>cos</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>k</mi><mi>z</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I(z) = I_0\cos(kz)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0785em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0315em;">k</span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mclose">)</span></span></span></span>. Integrating
+that current distribution against the free-space Green’s function gives a
+far-field pattern</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>cos</mi><mo>⁡</mo><mtext> ⁣</mtext><mrow><mo fence="true">(</mo><mfrac><mi>π</mi><mn>2</mn></mfrac><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo fence="true">)</mo></mrow></mrow><mrow><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">F(\theta) = \frac{\cos\!\left(\frac{\pi}{2}\cos\theta\right)}{\sin\theta}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.655em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.31em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">s</span><span class="mtight">i</span><span class="mtight">n</span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.6125em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">c</span><span class="mtight">o</span><span class="mtight">s</span></span><span class="mspace mtight" style="margin-right:-0.1952em;"></span><span class="minner mtight"><span class="mopen sizing reset-size3 size6 mtight delimcenter" style="top:0.075em;"><span class="mtight">(</span></span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6915em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">π</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mop mtight"><span class="mtight">c</span><span class="mtight">o</span><span class="mtight">s</span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight" style="margin-right:0.0278em;">θ</span><span class="mclose sizing reset-size3 size6 mtight delimcenter" style="top:0.075em;"><span class="mtight">)</span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>Directivity is peak radiation intensity over the average, so with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">F</span></span></span></span>
+normalised to 1 at <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mi>π</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">\theta = \pi/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">θ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">π</span><span class="mord">/2</span></span></span></span>:</p>
+<span class="katex-error" title="ParseError: KaTeX parse error: Can&#x27;t use function &#x27;$&#x27; in math mode at position 75: …theta\,d\theta}$̲$
+
+That integra…" style="color:#cc0000">    = \frac{2}{\displaystyle\int_0^{\pi} F^2(\theta)\,\sin\theta\,d\theta}$$
+
+That integral has a name. It is $\tfrac{1}{2}\mathrm{Cin}(2\pi)$, where
+$\mathrm{Cin}$ is the entire cosine integral, and it evaluates to
+
+$$\int_0^{\pi} F^2 \sin\theta \; d\theta = 1.21883
+\quad\Longrightarrow\quad D = \frac{2}{1.21883} = 1.6409$$
+
+$$G_{dBi} = 10\log_{10}(1.6409) = \mathbf{2.15\ dBi}$$
+
+**And the same integral gives the feed impedance.** Radiation resistance is
+defined by $P_{rad} = \tfrac{1}{2}I_0^2 R_r$, and working it through:
+
+$$R_r = \frac{\eta_0}{2\pi}\int_0^{\pi} F^2\sin\theta\,d\theta
+      = \frac{376.73}{2\pi}(1.21883) = \mathbf{73.1\ \Omega}$$
+
+So the two numbers every antenna discussion opens with — *2.15 dB of gain* and
+*73 ohms* — are the same integral read two ways. Neither is a rule of thumb.
+
+Two things worth taking from this. First, the 2.15 dB is **small**: a dipole is
+barely directive, and its "gain" is almost entirely the absence of radiation
+along the wire. Second, 73 Ω is why 50 Ω cable is a *compromise* rather than a
+match — the mismatch is 73/50 = 1.46:1, which is why a dipole fed with 50 Ω
+coax reads about 1.5:1 at resonance and that is **correct**, not a fault.
+
+*Both figures, and the closed form, are recomputed in
+`scripts/tests/test_rf_numbers.py` on every test run.*
+
+&#x3C;/details>
+
+## ERP and EIRP
+
+> **What term describing total radiated power takes into account all gains and
+> losses?**
+> **Effective radiated power.**
+
+$$P_{ERP} = P_{tx} \times 10^{(G - L)/10}$$
+
+Sum the losses in decibels, subtract from the gain, apply the net as a power
+ratio. **ERP uses dBd; EIRP uses dBi** — and the question tells you which by
+naming the gain's reference.
+
+**Three worked answers, exactly as the pool asks them:**
+
+**150 W, 2 dB feed line, 2.2 dB duplexer, 7 dBd antenna.**
+Losses 4.2 dB; net 7 − 4.2 = **+2.8 dB**.
+150 × 10^0.28 = 150 × 1.905 = **286 watts ERP**.
+
+**200 W, 4 dB feed line, 3.2 dB duplexer, 0.8 dB circulator, 10 dBd antenna.**
+Losses 8.0 dB; net **+2 dB**.
+200 × 10^0.2 = 200 × 1.585 = **317 watts ERP**.
+
+**200 W, 2 dB feed line, 2.8 dB duplexer, 1.2 dB circulator, 7 dBi antenna.**
+Losses 6.0 dB; net **+1 dB**.
+200 × 10^0.1 = 200 × 1.259 = **252 watts EIRP**.
+
+The method never changes. Add up losses, subtract from gain, one power ratio. The
+only thing to watch is that **every** loss goes in — repeater questions
+deliberately list three.
+
+## Efficiency
+
+> **What is antenna efficiency?**
+> **Radiation resistance divided by total resistance.**
+
+$$\eta = \frac{R_{radiation}}{R_{total}}$$
+
+An antenna's feed point resistance has two parts: **radiation resistance**, which
+represents power that leaves as radio waves, and **loss resistance**, which
+represents power that becomes heat. Both look identical to the transmitter.
+
+This is the number that explains the loaded mobile antenna. A short whip may have
+2 ohms of radiation resistance and 8 ohms of loss — 20% efficient, and 80% of your
+power warming a coil, while the SWR meter reads a contented 1:1.
+
+> **Which of the following improves the efficiency of a ground-mounted quarter-wave
+> vertical antenna?**
+> **Installing a ground radial system.**
+
+> **Which of the following determines ground losses for a ground-mounted vertical
+> antenna operating on HF?**
+> **Soil conductivity**
+
+A ground-mounted vertical returns its current through the earth, and earth is a
+poor conductor. Radials give that current a metal path instead, cutting the loss
+resistance and raising efficiency. **Soil conductivity** is why the same antenna
+performs differently in salt marsh and in dry sand — and it is not something you
+can change, which is why you add radials instead.
+
+## Ground gain
+
+> **What does the term "ground gain" mean?**
+> **An increase in signal strength from ground reflections in the environment of the
+> antenna**
+
+The ground reflects, and at low elevation angles the reflected wave can arrive in
+phase with the direct one — adding up to 6 dB over free space in that direction.
+
+It is genuinely free gain, and it is why antenna **height** is the single most
+effective HF investment: height sets the elevation angle at which the reflection
+reinforces, and low angles are where DX is.
+
+> **Which of the following factors affect the feed point impedance of an antenna?**
+> **Antenna height.**
+
+The same coupling to ground that produces ground gain also changes feed point
+impedance — which is the General-level observation that a dipole's impedance falls
+as you lower it, now with the mechanism.
+
+## Two more terms
+
+> **What is the difference in radiated power between a lossless antenna with gain and
+> an isotropic radiator driven by the same power?**
+> **They are the same**
+
+A lossless antenna radiates **all** the power it is given, exactly as an isotropic
+radiator would. Gain redistributes that power; it does not create any. This is the
+"gain is not amplification" point from the Technician track, stated as a total-power
+identity.
+
+> **Which frequency band has the smallest first Fresnel zone?**
+> **5.8 GHz** — of the choices offered.
+
+The Fresnel zone is the ellipsoidal region around a line-of-sight path that must be
+kept clear of obstructions. Its radius shrinks with wavelength, so the highest
+frequency has the smallest zone — which is why microwave links tolerate a narrower
+cleared path than VHF ones.
+
+## Check yourself
+
+1. A repeater: 100 W out, 3 dB feed line loss, 1 dB duplexer loss, 6 dBd antenna.
+   ERP?
+2. Your vertical has 3 ohms radiation resistance and 12 ohms of loss. Efficiency?
+3. An antenna is quoted at 9 dBi. What is that in dBd, and which figure would a
+   manufacturer prefer?
+
+&#x3C;details>
+&#x3C;summary>Answers&#x3C;/summary>
+
+1. Losses 4 dB, net +2 dB. 100 × 10^0.2 = **158 watts ERP**.
+2. 3 / (3 + 12) = **20%**. Four-fifths of your power becomes heat.
+3. 9 − 2.15 = **6.85 dBd**. The manufacturer prefers **dBi**, because it is the
+   bigger number for the same antenna.
+
+&#x3C;/details></span></details></article><section class="mt-12" aria-labelledby="teaches-heading"><h2 id="teaches-heading" class="text-lg font-semibold tracking-tight">What this lesson adds to the graph</h2><ul class="mt-3 flex flex-wrap gap-2"><li><a href="/radiocert/glossary/#erp-from-budget" class="chip no-underline"><span style="color: var(--ink-muted)">formula</span> ERP or EIRP from a station budget</a></li><li><a href="/radiocert/glossary/#erp" class="chip no-underline"><span style="color: var(--ink-muted)">term</span> Effective Radiated Power</a></li></ul></section><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">12 questions from 2024-2028 Amateur Extra (Element 4). Drill them in <a href="/radiocert/practice/?pool=extra-2024&amp;objectives=E9A">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">E9A01 · E9A02 · E9A03 · E9A04 · E9A05 · E9A06 · E9A07 · E9A08 · E9A09 · E9A10 · E9A11 · E9A12</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> E9A</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><span class="flex-1"></span><a href="/radiocert/lessons/amateur-extra/antennas/02-patterns-and-modelling/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Reading Antenna Patterns, and Modelling Antennas</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-extra/antennas/01-antenna-parameters" data-lesson-title="Antenna Parameters, Computed" data-lesson-track="amateur-extra" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#antenna-gain">Antenna Gain</a></li><li><a href="/radiocert/glossary/#decibels-are-ratios">A decibel is always a comparison</a></li></ul></section><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

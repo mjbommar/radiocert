@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Modes and What They Cost in Bandwidth · Radio Certification Study System</title><meta name="description" content="Compare FM, SSB, and CW by the spectrum each occupies and the situation each suits, and recall the four bandwidth figures the pool asks for."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-technician/">Technician</a><span aria-hidden="true">/</span><span>Signals, Modes, and Emissions</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Modes and What They Cost in Bandwidth</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Compare FM, SSB, and CW by the spectrum each occupies and the situation each suits, and recall the four bandwidth figures the pool asks for.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">10 min read</span><a href="/radiocert/objectives/T8A/" class="chip no-underline" style="font-family: var(--font-mono)">T8A</a><span class="chip chip-quiet">Signals, Modulation &amp; Modes</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="two-families-of-modulation">Two families of modulation</h2>
+<p>Every analogue voice mode does one of two things to a carrier.</p>
+<p><strong>Amplitude modulation</strong> varies the carrier’s <em>strength</em> with the audio.
+<strong>Single sideband is a form of amplitude modulation</strong> — the pool asks this
+directly. SSB is AM with the carrier and one sideband removed, which is why it
+fits in a third of the space and puts all the power into information.</p>
+<p><strong>Frequency modulation</strong> varies the carrier’s <em>frequency</em> with the audio. FM and
+its close relative PM (phase modulation) are what <strong>VHF and UHF voice repeaters</strong>
+use, and what <strong>VHF packet radio</strong> uses.</p>
+<h2 id="the-bandwidth-table">The bandwidth table</h2>
+<figure class="lesson-figure"><img src="/radiocert/figures/mode-bandwidths.svg" alt="Horizontal bars on a logarithmic frequency axis from 100 hertz to 10 megahertz. PSK31 occupies about 31 hertz, FT8 about 50 hertz, CW about 150 hertz, single sideband voice about 3 kilohertz, FM voice on VHF repeaters between 10 and 15 kilohertz, and analogue fast-scan television about 6 megahertz." loading="lazy" decoding="async" data-theme-figure="light"><img src="/radiocert/figures/mode-bandwidths-dark.svg" alt="Horizontal bars on a logarithmic frequency axis from 100 hertz to 10 megahertz. PSK31 occupies about 31 hertz, FT8 about 50 hertz, CW about 150 hertz, single sideband voice about 3 kilohertz, FM voice on VHF repeaters between 10 and 15 kilohertz, and analogue fast-scan television about 6 megahertz." loading="lazy" decoding="async" data-theme-figure="dark"><figcaption><strong>Bandwidth by mode.</strong> Each step right is ten times the spectrum. An FM repeater signal is roughly four times wider than SSB, and one fast-scan TV signal would cover the entire 2 metre band one and a half times over.</figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Mode</th><th>Approximate bandwidth</th></tr></thead><tbody><tr><td><strong>CW</strong></td><td><strong>150 Hz</strong></td></tr><tr><td><strong>SSB voice</strong></td><td><strong>3 kHz</strong></td></tr><tr><td><strong>FM voice (VHF repeater)</strong></td><td><strong>between 10 and 15 kHz</strong></td></tr><tr><td><strong>AM fast-scan TV</strong></td><td><strong>about 6 MHz</strong></td></tr></tbody></table>
+<p>Four numbers, all asked directly. <strong>CW has the narrowest bandwidth</strong> of the
+signal types in the pool.</p>
+<p>The scale is worth feeling rather than memorising. One fast-scan television
+signal is about 6 MHz wide — the entire 2 metre band is 4 MHz. A single analogue
+TV transmission would not fit in it.</p>
+<h2 id="why-ssb-for-weak-signals">Why SSB for weak signals</h2>
+<blockquote class="pool-qa"><p class="pool-q">Which type of voice mode is often used for long-distance (weak signal)
+contacts on the VHF and UHF bands?</p><p class="pool-a"><span class="pool-a-text">SSB.</span></p></blockquote>
+<p>Two reasons, and they compound:</p>
+<p><strong>Narrower bandwidth means less noise.</strong> A receiver’s noise power is
+proportional to its bandwidth. An SSB receiver taking in 3 kHz admits roughly a
+quarter of the noise an FM receiver taking in 12 kHz does — about 6 dB of free
+sensitivity.</p>
+<p><strong>FM has a threshold and SSB does not.</strong> An FM signal below the receiver’s
+threshold does not get quieter, it disappears into noise. An SSB signal just
+gets weaker, and a human ear pulls speech out of noise remarkably far down.</p>
+<blockquote class="pool-qa"><p class="pool-q">What is one characteristic of single sideband (SSB) compared to FM?</p><p class="pool-a"><span class="pool-a-text">SSB signals have narrower bandwidth.</span></p></blockquote>
+<h2 id="which-sideband">Which sideband</h2>
+<blockquote class="pool-qa"><p class="pool-q">Which sideband is normally used for 10-meter HF, VHF, and UHF single-sideband
+communications?</p><p class="pool-a"><span class="pool-a-text">Upper sideband.</span></p></blockquote>
+<p>Convention, not rule. USB above 10 MHz and on VHF/UHF; LSB on 160, 80, and 40
+metres. Nobody remembers why; everybody follows it, and using the wrong one makes
+your voice unintelligible rather than merely different.</p>
+<h2 id="where-fm-wins">Where FM wins</h2>
+<p>FM is not the poor relation — it dominates local operating for good reasons.
+Constant amplitude makes it immune to the impulse noise that plagues AM, and
+receivers are simple and cheap. Its distinctive property is the <strong>capture
+effect</strong>: when two signals arrive together, the stronger one wins completely.</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following is a disadvantage of FM compared with single
+sideband?</p><p class="pool-a"><span class="pool-a-text">Only one signal can be received at a time.</span></p></blockquote>
+<p>That is the capture effect stated as a cost. On SSB you hear two stations
+overlapping and can work through it; on FM the weaker one simply vanishes. On a
+busy repeater that is a feature — no mush, just whoever is strongest. In a
+contest or an emergency net where several stations need to be heard, it is a
+liability.</p>
+<h2 id="choosing-in-practice">Choosing, in practice</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Situation</th><th>Mode</th></tr></thead><tbody><tr><td>Local contact through a repeater</td><td>FM</td></tr><tr><td>Distant VHF contact, weak signal</td><td>SSB, horizontally polarised</td></tr><tr><td>Weakest possible signal, any distance</td><td>CW or a digital mode</td></tr><tr><td>Data over VHF</td><td>FM with a packet or digital modem</td></tr></tbody></table>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Rank CW, FM voice, and SSB voice by bandwidth, narrowest first.</li>
+<li>Why does SSB reach further than FM at the same power?</li>
+<li>Two stations transmit on the same FM repeater input at once. What does the
+repeater retransmit?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>CW (150 Hz), SSB (3 kHz), FM (10–15 kHz).</strong></li>
+<li>Narrower bandwidth admits less receiver noise — about 6 dB — and SSB degrades
+gracefully below the point where FM drops out entirely.</li>
+<li><strong>The stronger one, alone.</strong> That is the capture effect; only one signal is
+received at a time.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">12 questions from 2026-2030 Technician (Element 2). Drill them in <a href="/radiocert/practice/?pool=tech-2026&amp;objectives=T8A">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">T8A01 · T8A02 · T8A03 · T8A04 · T8A05 · T8A06 · T8A07 · T8A08 · T8A09 · T8A10 · T8A11 · T8A12</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> T8A</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><span class="flex-1"></span><a href="/radiocert/lessons/amateur-technician/signals-and-modes/02-digital-modes/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Digital Modes</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-technician/signals-and-modes/01-modes-and-bandwidth" data-lesson-title="Modes and What They Cost in Bandwidth" data-lesson-track="amateur-technician" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#frequency">Frequency</a></li><li><a href="/radiocert/glossary/#decibel">Decibel</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#two-families-of-modulation" class="toc-link" data-depth="2">Two families of modulation</a></li><li><a href="#the-bandwidth-table" class="toc-link" data-depth="2">The bandwidth table</a></li><li><a href="#why-ssb-for-weak-signals" class="toc-link" data-depth="2">Why SSB for weak signals</a></li><li><a href="#which-sideband" class="toc-link" data-depth="2">Which sideband</a></li><li><a href="#where-fm-wins" class="toc-link" data-depth="2">Where FM wins</a></li><li><a href="#choosing-in-practice" class="toc-link" data-depth="2">Choosing, in practice</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

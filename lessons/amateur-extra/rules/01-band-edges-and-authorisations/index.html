@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Band Edges, Sidebands, and Special Authorisations · Radio Certification Study System</title><meta name="description" content="Compute where your emission actually sits relative to a band edge, and know the rules for 60 metres, the LF/MF bands, and stations aboard ships and aircraft."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-extra/">Extra</a><span aria-hidden="true">/</span><span>Commission Rules</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Band Edges, Sidebands, and Special Authorisations</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Compute where your emission actually sits relative to a band edge, and know the rules for 60 metres, the LF/MF bands, and stations aboard ships and aircraft.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">12 min read</span><a href="/radiocert/objectives/E1A/" class="chip no-underline" style="font-family: var(--font-mono)">E1A</a><span class="chip chip-quiet">Rules &amp; Regulations</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="your-dial-reads-the-carrier-not-your-signal">Your dial reads the carrier, not your signal</h2>
+<p>This is the single most-tested idea in Extra rules, and it catches people who have
+operated legally for years by luck.</p>
+<p><strong>A transceiver displays the suppressed carrier frequency.</strong> Your actual emission
+occupies about 3 kHz on one side of that number — above it for USB, below it for LSB.
+The band edge applies to <strong>the emission</strong>, not to the dial.</p>
+<figure class="lesson-figure"><img src="/radiocert/figures/sideband-band-edges.svg" alt="Three horizontal bars on a frequency axis from 14.346 to 14.353 megahertz, with the 20 metre band edge marked at 14.350 megahertz and the region above it shaded as out of band. A carrier at 14.347 megahertz produces an emission from 14.347 to 14.350 that is entirely in band. A carrier at 14.348 megahertz produces an emission from 14.348 to 14.351, of which the upper 1 kilohertz is outside the band. A carrier at 14.350 megahertz, on the edge itself, puts the entire 3 kilohertz emission outside the band." loading="lazy" decoding="async" data-theme-figure="light"><img src="/radiocert/figures/sideband-band-edges-dark.svg" alt="Three horizontal bars on a frequency axis from 14.346 to 14.353 megahertz, with the 20 metre band edge marked at 14.350 megahertz and the region above it shaded as out of band. A carrier at 14.347 megahertz produces an emission from 14.347 to 14.350 that is entirely in band. A carrier at 14.348 megahertz produces an emission from 14.348 to 14.351, of which the upper 1 kilohertz is outside the band. A carrier at 14.350 megahertz, on the edge itself, puts the entire 3 kilohertz emission outside the band." loading="lazy" decoding="async" data-theme-figure="dark"><figcaption><strong>Carrier frequency versus occupied bandwidth at a band edge.</strong> A transceiver displays the suppressed carrier, not the emission. An upper sideband signal occupies 3 kHz above that number, so the highest legal carrier is a full bandwidth below the edge. Lower sideband is the mirror image: it extends 3 kHz downward, so the lowest legal carrier is a full bandwidth above the lower edge.</figcaption></figure>
+<blockquote class="pool-qa"><p class="pool-q">Why is it not legal to transmit a 3 kHz bandwidth USB signal with a carrier
+frequency of 14.348 MHz?</p><p class="pool-a"><span class="pool-a-text">The upper 1 kHz of the signal is outside the 20-meter band.</span></p></blockquote>
+<p>Work it: 14.348 + 0.003 = <strong>14.351 MHz</strong>. The 20 metre band ends at 14.350. The top
+<strong>1 kHz</strong> of your signal is out of band.</p>
+<blockquote class="pool-qa"><p class="pool-q">When using a transceiver that displays the carrier frequency of phone signals,
+which of the following displayed frequencies represents the lowest frequency at which
+a properly adjusted LSB emission will be totally within the band?</p><p class="pool-a"><span class="pool-a-text">3 kHz above the lower band edge.</span></p></blockquote>
+<p>LSB extends <em>downward</em>, so the carrier must sit a full bandwidth <strong>above</strong> the lower
+edge. The two cases are mirror images:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Mode</th><th>Emission occupies</th><th>Safe carrier range</th></tr></thead><tbody><tr><td><strong>USB</strong></td><td>carrier → carrier <strong>+ 3 kHz</strong></td><td>up to <strong>upper edge − 3 kHz</strong></td></tr><tr><td><strong>LSB</strong></td><td>carrier <strong>− 3 kHz</strong> → carrier</td><td>from <strong>lower edge + 3 kHz</strong></td></tr></tbody></table>
+<blockquote class="pool-qa"><p class="pool-q">What is the highest legal carrier frequency on the 20-meter band for transmitting a
+2.8 kHz wide USB data signal?</p><p class="pool-a"><span class="pool-a-text">14.1472 MHz.</span></p></blockquote>
+<p>The 20 metre data segment ends at <strong>14.150 MHz</strong>, and USB extends upward:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>14.150</mn><mo>−</mo><mn>0.0028</mn><mo>=</mo><mn>14.1472</mn><mtext> MHz</mtext></mrow><annotation encoding="application/x-tex">14.150 - 0.0028 = 14.1472 \text{ MHz}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">14.150</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.0028</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">14.1472</span><span class="mord text"><span class="mord"> MHz</span></span></span></span></span></p>
+<p>Note it is the <strong>data segment</strong> edge, not the band edge — a data emission must stay
+inside the segment where data is authorised.</p>
+<blockquote class="pool-qa"><p class="pool-q">May an Extra class operator answer the CQ of a station on 3.601 MHz LSB phone?</p><p class="pool-a"><span class="pool-a-text">No, the sideband components will extend beyond the edge of the phone band
+segment.</span></p></blockquote>
+<p>The 75 metre phone segment for Extra begins at <strong>3.600 MHz</strong>. LSB at 3.601 extends down
+to <strong>3.598</strong> — 2 kHz outside. The station calling CQ there is operating illegally, and
+answering does not make it legal for you.</p>
+<p><strong>The rule to carry away: leave a full bandwidth of margin at every segment edge.</strong></p>
+<h2 id="sixty-metres--channels-and-a-band">Sixty metres — channels <em>and</em> a band</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the required transmit frequency of a CW signal for channelized 60 meter
+operation?</p><p class="pool-a"><span class="pool-a-text">At the center frequency of the channel.</span></p></blockquote>
+<p>Sixty metres is a secondary allocation shared with federal users, and it is the one
+place in Part 97 where you are given <strong>discrete channels</strong> rather than a band with
+edges. Read <strong>§97.303(h)(3)</strong> and it is actually both:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>Where</th><th>Power</th></tr></thead><tbody><tr><td><strong>Four discrete channels</strong></td><td>centres 5332.0, 5348.0, 5373.0, 5405.0 kHz</td><td><strong>100 W ERP</strong></td></tr><tr><td><strong>One 15 kHz band</strong></td><td><strong>5351.5 – 5366.5 kHz</strong></td><td><strong>9.15 W ERP</strong></td></tr></tbody></table>
+<figure class="lesson-figure"><img src="/radiocert/figures/sixty-metre-allocation.svg" alt="A frequency axis from 5325 to 5410 kilohertz. Four narrow discrete channels are marked at centre frequencies 5332.0, 5348.0, 5373.0 and 5405.0 kilohertz, each 2.8 kilohertz wide and limited to 100 watts ERP. Between the second and third channels a wider contiguous band runs from 5351.5 to 5366.5 kilohertz, limited to 9.15 watts ERP. A marker at 5358.5 kilohertz shows where the former fifth channel sat, now inside the band." loading="lazy" decoding="async" data-theme-figure="light"><img src="/radiocert/figures/sixty-metre-allocation-dark.svg" alt="A frequency axis from 5325 to 5410 kilohertz. Four narrow discrete channels are marked at centre frequencies 5332.0, 5348.0, 5373.0 and 5405.0 kilohertz, each 2.8 kilohertz wide and limited to 100 watts ERP. Between the second and third channels a wider contiguous band runs from 5351.5 to 5366.5 kilohertz, limited to 9.15 watts ERP. A marker at 5358.5 kilohertz shows where the former fifth channel sat, now inside the band." loading="lazy" decoding="async" data-theme-figure="dark"><figcaption><strong>The 60 metre allocation: four channels and a band.</strong> Four discrete channels plus one 15 kHz band, not five channels. The old 5358.5 kHz channel is now inside the band, where the limit is 9.15 W ERP rather than 100 W. On the channels, CW sets its carrier on the centre frequency and phone or data sets it 1.5 kHz below; nothing anywhere on 60 m may occupy more than 2.8 kHz.</figcaption></figure>
+<p><strong>This is the part most study material still gets wrong.</strong> For years there were <em>five</em>
+channels; the WRC-15 allocation absorbed the old 5358.5 kHz channel into a contiguous
+band, and the regulation now grants four channels plus that band. The pool question
+still says “channelized”, and it is still right about the channels — but “60 metres is
+five channels” is out of date.</p>
+<p>Three rules, straight from the section:</p>
+<ul>
+<li><strong>CW</strong> (emission 150HA1A) sets its <strong>carrier on the centre frequency</strong>, so the signal
+sits symmetrically in the channel. That is the pool answer.</li>
+<li><strong>Phone, data, and RTTY</strong> (2K80J3E, 2K80J2D, 60H0J2B) may set the carrier <strong>1.5 kHz
+below</strong> the centre — so a USB emission extending upward ends up centred. The dial
+frequencies are therefore 5330.5, 5346.5, 5371.5, and 5403.5 kHz.</li>
+<li><strong>No emission anywhere on 60 m may occupy more than 2.8 kHz.</strong></li>
+</ul>
+<p>Note <strong>ERP</strong>, and note that §97.313(i) says ERP here is computed against a <strong>half-wave
+dipole</strong>, not an isotropic radiator. Feed a dipole 100 W and you are at the channel
+limit.</p>
+<h2 id="the-lf-and-mf-bands">The LF and MF bands</h2>
+<p>Two very low-frequency bands with power limits expressed unusually. §97.313(k) and
+(l) each set <strong>two</strong> limits, and both bind:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Band</th><th>Radiated</th><th>Transmitter</th></tr></thead><tbody><tr><td><strong>2200 m</strong> (135.7–137.8 kHz)</td><td><strong>1 W EIRP</strong></td><td>1.5 kW PEP</td></tr><tr><td><strong>630 m</strong> (472–479 kHz)</td><td><strong>5 W EIRP</strong></td><td><strong>500 W PEP</strong></td></tr></tbody></table>
+<blockquote class="pool-qa"><p class="pool-q">What is the maximum power permitted on the 2200-meter band?</p><p class="pool-a"><span class="pool-a-text">1 watt EIRP (equivalent isotropic radiated power).</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">Except in some parts of Alaska, what is the maximum power permitted on the
+630-meter band?</p><p class="pool-a"><span class="pool-a-text">5 watts EIRP (equivalent isotropic radiated power)</span></p></blockquote>
+<p><strong>EIRP, not transmitter output</strong> — that is what the pool is testing. At these
+wavelengths any practical antenna is electrically tiny and radiates a small fraction
+of what you feed it, so a station legally at 1 W EIRP may be running far more than a
+watt into the antenna. The limit is on what actually leaves, which is the only
+quantity that matters to the incumbent power-line carrier users.</p>
+<p>But do not over-learn that. <strong>The transmitter-power ceiling is still there</strong>, and on
+630 m it is a low one: <strong>500 W PEP</strong>, whatever your antenna efficiency works out to.</p>
+<p>The Alaska exception is narrower than “parts of Alaska” suggests: stations in Alaska
+<strong>within 800 km of the Russian Federation</strong> are held to <strong>1 W EIRP</strong> on 630 m.</p>
+<p>One more limit that is easy to miss, because it is filed under antennas rather than
+power — <strong>§97.15(c): an antenna transmitting on 2200 m or 630 m must not exceed 60
+metres above ground level.</strong> At a 630 metre wavelength that is barely a tenth of a
+wave, which is precisely why efficiency is so low and why the limits are written as
+EIRP in the first place.</p>
+<blockquote class="pool-qa"><p class="pool-q">In what portion of the 630-meter band are phone emissions permitted?</p><p class="pool-a"><span class="pool-a-text">The entire band.</span></p></blockquote>
+<h2 id="aboard-ships-and-aircraft">Aboard ships and aircraft</h2>
+<blockquote class="pool-qa"><p class="pool-q">If an amateur station is installed aboard a ship or aircraft, what condition must
+be met before the station is operated?</p><p class="pool-a"><span class="pool-a-text">Its operation must be approved by the master of the ship or the pilot in command
+of the aircraft</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">What licensing is required when operating an amateur station aboard a US-registered
+vessel in international waters?</p><p class="pool-a"><span class="pool-a-text">Any FCC-issued amateur license.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">Who must be in physical control of the station apparatus of an amateur station
+aboard any vessel or craft that is documented or registered in the United States?</p><p class="pool-a"><span class="pool-a-text">Any person holding an FCC issued amateur license or who is authorized for alien
+reciprocal operation.</span></p></blockquote>
+<p>The vessel’s registration carries FCC jurisdiction with it, so a US-registered ship in
+international waters is FCC territory. But the <strong>master or pilot in command has
+absolute authority</strong> over what operates aboard — a safety rule that overrides your
+licence entirely.</p>
+<h2 id="message-forwarding">Message forwarding</h2>
+<blockquote class="pool-qa"><p class="pool-q">If a station in a message forwarding system inadvertently forwards a message that
+is in violation of FCC rules, who is primarily accountable for the rules
+violation?</p><p class="pool-a"><span class="pool-a-text">The control operator of the originating station.</span></p></blockquote>
+<p><strong>Responsibility follows the origin.</strong> A store-and-forward system cannot inspect every
+message, so the rules place primary accountability on whoever put it into the system —
+not on the relaying stations. A forwarding station that <em>knowingly</em> passes a violation
+is a different matter, but the default is the originator.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>You want to run USB data 2.8 kHz wide, ending exactly at the top of the 20 m data
+segment. What carrier frequency?</li>
+<li>Someone tells you their 630 m station runs 400 watts to the antenna. Are they
+necessarily violating the rules? What if they said 700 watts?</li>
+<li>You are a licensed amateur flying as a passenger and want to operate. What do you
+need?</li>
+<li>You want to work CW on 5358.5 kHz. Which of the two 60 m regimes are you in, and
+what is your power limit?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>14.1472 MHz</strong> — 14.150 minus 2.8 kHz, because USB extends upward.</li>
+<li><strong>400 W: not necessarily.</strong> The 630 m radiated limit is <strong>5 W EIRP</strong>, and an
+electrically small antenna at 475 kHz radiates a tiny fraction of what you feed
+it, so 400 W in can still be under 5 W out. <strong>700 W: yes, definitely</strong> — §97.313(l)
+caps 630 m transmitter power at <strong>500 W PEP</strong> regardless of antenna efficiency.</li>
+<li><strong>Approval from the pilot in command</strong>, in addition to your licence. Their
+authority over the aircraft is absolute.</li>
+<li>5358.5 kHz sits inside <strong>5351.5–5366.5 kHz</strong>, so you are in the <strong>band</strong>, not on a
+channel — the limit is <strong>9.15 W ERP</strong>, not 100 W. This used to be a channel, and
+it is the change most study material has not caught up with.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">11 questions from 2024-2028 Amateur Extra (Element 4). Drill them in <a href="/radiocert/practice/?pool=extra-2024&amp;objectives=E1A">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">E1A01 · E1A02 · E1A03 · E1A04 · E1A05 · E1A06 · E1A07 · E1A08 · E1A09 · E1A10 · E1A11</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> E1A</li><li><span class="chip">cfr</span> 47 CFR 97.303<span> — 60 m channels and band</span><span style="color: var(--ink-muted)"> (verified 2026-07-30)</span></li><li><span class="chip">cfr</span> 47 CFR 97.313<span> — 60 m, 630 m, 2200 m power</span><span style="color: var(--ink-muted)"> (verified 2026-07-30)</span></li><li><span class="chip">cfr</span> 47 CFR 97.15<span> — 60 m antenna height limit on LF/MF</span><span style="color: var(--ink-muted)"> (verified 2026-07-30)</span></li><li><span class="chip">source</span> cfr-47-97</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><span class="flex-1"></span><a href="/radiocert/lessons/amateur-extra/rules/02-station-restrictions-and-zoning/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Station Restrictions, Quiet Zones, and Zoning</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-extra/rules/01-band-edges-and-authorisations" data-lesson-title="Band Edges, Sidebands, and Special Authorisations" data-lesson-track="amateur-extra" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#frequency">Frequency</a></li><li><a href="/radiocert/glossary/#control-operator">Control Operator</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#your-dial-reads-the-carrier-not-your-signal" class="toc-link" data-depth="2">Your dial reads the carrier, not your signal</a></li><li><a href="#sixty-metres--channels-and-a-band" class="toc-link" data-depth="2">Sixty metres — channels and a band</a></li><li><a href="#the-lf-and-mf-bands" class="toc-link" data-depth="2">The LF and MF bands</a></li><li><a href="#aboard-ships-and-aircraft" class="toc-link" data-depth="2">Aboard ships and aircraft</a></li><li><a href="#message-forwarding" class="toc-link" data-depth="2">Message forwarding</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Bands, Modes, and Band Edges · Radio Certification Study System</title><meta name="description" content="Say where a Technician may transmit, in what mode, at what power — and why operating exactly at a band edge is a bad idea."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-technician/">Technician</a><span aria-hidden="true">/</span><span>The Commission&#39;s Rules</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Bands, Modes, and Band Edges</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Say where a Technician may transmit, in what mode, at what power — and why operating exactly at a band edge is a bad idea.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">11 min read</span><a href="/radiocert/objectives/T1B/" class="chip no-underline" style="font-family: var(--font-mono)">T1B</a><span class="chip chip-quiet">Rules &amp; Regulations</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="the-short-version">The short version</h2>
+<p>A Technician gets <strong>all amateur privileges above 50 MHz</strong> — the whole of 6
+metres, 2 metres, 1.25 metres, 70 centimetres, and everything above — plus four
+narrow slices of HF, only one of which permits voice.</p>
+<p>The VHF and UHF privileges are the point of the licence. The HF slices are a
+taste of what General opens up.</p>
+<h2 id="hf-four-segments-one-voice-privilege">HF: four segments, one voice privilege</h2>
+<figure class="lesson-figure"><img src="/radiocert/figures/technician-hf-privileges.svg" alt="Four horizontal band strips. On 80 metres, 3.525 to 3.600 megahertz is CW only. On 40 metres, 7.025 to 7.125 is CW only. On 15 metres, 21.025 to 21.200 is CW only. On 10 metres, 28.000 to 28.300 is CW, RTTY and data, and 28.300 to 28.500 is the only voice privilege, marked phone and image. All four segments are limited to 200 watts PEP." loading="lazy" decoding="async" data-theme-figure="light"><img src="/radiocert/figures/technician-hf-privileges-dark.svg" alt="Four horizontal band strips. On 80 metres, 3.525 to 3.600 megahertz is CW only. On 40 metres, 7.025 to 7.125 is CW only. On 15 metres, 21.025 to 21.200 is CW only. On 10 metres, 28.000 to 28.300 is CW, RTTY and data, and 28.300 to 28.500 is the only voice privilege, marked phone and image. All four segments are limited to 200 watts PEP." loading="lazy" decoding="async" data-theme-figure="dark"><figcaption><strong>Technician HF privileges.</strong> Three of the four HF segments are CW only. The single Technician voice privilege below 30 MHz is 28.300-28.500 MHz on 10 metres, and every one of these segments is capped at 200 W PEP.</figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Band</th><th>Segment</th><th>Modes</th></tr></thead><tbody><tr><td>80 m</td><td>3.525 – 3.600 MHz</td><td>CW only</td></tr><tr><td>40 m</td><td>7.025 – 7.125 MHz</td><td>CW only</td></tr><tr><td>15 m</td><td>21.025 – 21.200 MHz</td><td>CW only</td></tr><tr><td>10 m</td><td>28.000 – 28.300 MHz</td><td>CW, RTTY, data</td></tr><tr><td>10 m</td><td><strong>28.300 – 28.500 MHz</strong></td><td><strong>phone and image</strong></td></tr></tbody></table>
+<p>Two facts the pool asks in several forms:</p>
+<ul>
+<li><strong>The only Technician HF phone privilege is 28.300 to 28.500 MHz</strong>, on the 10
+metre band.</li>
+<li><strong>Technician HF segments are limited to 200 watts PEP</strong> (§97.313(c)(2)).
+Everywhere else, the general amateur limit of <strong>1500 watts PEP</strong> applies.</li>
+</ul>
+<p>Ten metres is worth caring about. It is a band that opens spectacularly at solar
+maximum, and a Technician with 200 W and a simple antenna works the world on it
+when conditions cooperate.</p>
+<h2 id="vhf-and-uhf-everything-with-two-cw-only-edges">VHF and UHF: everything, with two CW-only edges</h2>
+<p>Above 50 MHz a Technician holds full privileges. The band edges to know:</p>
+<ul>
+<li><strong>6 m:</strong> 50 – 54 MHz. <em>50.0 – 50.1 MHz is CW only.</em></li>
+<li><strong>2 m:</strong> 144 – 148 MHz. <em>144.0 – 144.1 MHz is CW only.</em></li>
+<li><strong>1.25 m:</strong> 222 – 225 MHz</li>
+<li><strong>70 cm:</strong> 420 – 450 MHz</li>
+</ul>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following VHF/UHF band segments are limited to CW only?</p><p class="pool-a"><span class="pool-a-text">50.0 MHz to 50.1 MHz and 144.0 MHz to 144.1 MHz</span></p></blockquote>
+<p>Those two 100 kHz slices exist to protect weak-signal work at the bottom of each
+band from wideband FM. They are worth memorising as a pair.</p>
+<p>Some frequency anchors the pool uses:</p>
+<ul>
+<li><strong>52.525 MHz</strong> is in the <strong>6 metre</strong> band — the national FM simplex calling
+frequency there.</li>
+<li><strong>146.52 MHz</strong> is in the <strong>2 metre</strong> band — the national FM simplex calling
+frequency, and the single most-quoted number in amateur radio.</li>
+</ul>
+<p><strong>SSB phone may be used in at least some segment of every amateur band above 50
+MHz.</strong> Not the whole band, but somewhere in each — usually just above the CW
+segment.</p>
+<h2 id="digital-modes">Digital modes</h2>
+<p><strong>Technicians may use digital modes on all of their bands.</strong> The pool’s question
+about which bands include Technician digital privileges answers “all these
+choices are correct”. On HF the digital segment is 28.000 – 28.300 MHz; above
+50 MHz, digital is permitted where the band plan puts it.</p>
+<h2 id="the-international-space-station">The International Space Station</h2>
+<p><strong>Any amateur with a Technician class or higher licence may contact the ISS.</strong>
+There is no additional endorsement and no higher class required. The crew
+operates an ordinary amateur station, and a handheld with a decent antenna
+genuinely reaches it on a good pass.</p>
+<p>Related: the control operator of a station communicating through an amateur
+satellite may be <strong>any amateur allowed to transmit on the satellite’s uplink
+frequency</strong>. The privilege follows the uplink, not the downlink.</p>
+<h2 id="primary-and-secondary-allocations">Primary and secondary allocations</h2>
+<p>Some amateur allocations are <strong>secondary</strong>: another service holds the band
+primarily, and amateurs use it on the condition of not interfering.</p>
+<blockquote class="pool-qa"><p class="pool-q">How are US amateurs restricted in segments of bands where the Amateur Radio
+Service is secondary?</p><p class="pool-a"><span class="pool-a-text">U.S. amateurs may find non-amateur stations in those segments, and must avoid
+interfering with them</span></p></blockquote>
+<p>This is not a technicality. On 70 centimetres, amateurs are secondary to
+government radiolocation across much of the band. Hearing something that is not
+an amateur station there means moving, not complaining.</p>
+<h2 id="why-you-should-not-sit-on-the-band-edge">Why you should not sit on the band edge</h2>
+<blockquote class="pool-qa"><p class="pool-q">Why should you not set your transmit frequency to be exactly at the edge of
+an amateur band or sub-band?</p><p class="pool-a"><span class="pool-a-text">All these choices are correct.</span></p></blockquote>
+<p>The three reasons, and they all matter:</p>
+<ul>
+<li><strong>Your sidebands extend beyond your carrier frequency.</strong> A dial reading of
+144.000 MHz on SSB puts energy <em>below</em> 144.000 — outside the band.</li>
+<li><strong>Your frequency display may be slightly inaccurate.</strong> Consumer transceivers
+are typically specified to a few parts per million, which at 440 MHz is
+hundreds of hertz.</li>
+<li><strong>Your signal occupies bandwidth.</strong> An FM signal is roughly 16 kHz wide; the
+dial number is its centre, not its edge.</li>
+</ul>
+<p>The practical habit: stay a few kilohertz inside the edge on SSB and CW, and
+further inside on FM. Nobody has ever been cited for being 5 kHz too polite.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>You want to make an HF voice contact as a Technician. Where, and at what
+maximum power?</li>
+<li>Name two reasons not to set an FM transmitter’s dial to exactly 146.000 MHz.</li>
+<li>Which of 52.525 MHz and 146.52 MHz is on 6 metres?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>28.300 – 28.500 MHz</strong> on 10 metres, at up to <strong>200 W PEP</strong>.</li>
+<li>Any two of: an FM signal is about 16 kHz wide and the dial shows its <em>centre</em>,
+so half of it sits below; the display itself is accurate only to a few parts
+per million; and sidebands extend either side of the carrier. (146.000 is
+inside the band, so this one is about occupied bandwidth rather than
+legality — but at 144.000 the same three reasons put you outside it.)</li>
+<li><strong>52.525 MHz.</strong> 146.52 MHz is the 2 metre simplex calling frequency.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">12 questions from 2026-2030 Technician (Element 2). Drill them in <a href="/radiocert/practice/?pool=tech-2026&amp;objectives=T1B">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">T1B01 · T1B02 · T1B03 · T1B04 · T1B05 · T1B06 · T1B07 · T1B08 · T1B09 · T1B10 · T1B11 · T1B12</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">cfr</span> 47 CFR 97.301(e)<span> — Technician/Novice frequency bands</span><span style="color: var(--ink-muted)"> (verified 2026-07-30)</span></li><li><span class="chip">cfr</span> 47 CFR 97.305(c)<span> — Emission types by band segment</span><span style="color: var(--ink-muted)"> (verified 2026-07-30)</span></li><li><span class="chip">cfr</span> 47 CFR 97.313<span> — Transmitter power standards</span><span style="color: var(--ink-muted)"> (verified 2026-07-30)</span></li><li><span class="chip">pool</span> T1B</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-technician/rules-and-licensing/02-licences-and-call-signs/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">Licences, Call Signs, and Keeping Yours</span></a><a href="/radiocert/lessons/amateur-technician/rules-and-licensing/04-what-may-be-transmitted/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">What May and May Not Be Transmitted</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-technician/rules-and-licensing/03-bands-and-privileges" data-lesson-title="Bands, Modes, and Band Edges" data-lesson-track="amateur-technician" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#band-names-are-wavelengths">Bands are named by wavelength, radios are tuned by frequency</a></li><li><a href="/radiocert/glossary/#pep">Peak Envelope Power</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#the-short-version" class="toc-link" data-depth="2">The short version</a></li><li><a href="#hf-four-segments-one-voice-privilege" class="toc-link" data-depth="2">HF: four segments, one voice privilege</a></li><li><a href="#vhf-and-uhf-everything-with-two-cw-only-edges" class="toc-link" data-depth="2">VHF and UHF: everything, with two CW-only edges</a></li><li><a href="#digital-modes" class="toc-link" data-depth="2">Digital modes</a></li><li><a href="#the-international-space-station" class="toc-link" data-depth="2">The International Space Station</a></li><li><a href="#primary-and-secondary-allocations" class="toc-link" data-depth="2">Primary and secondary allocations</a></li><li><a href="#why-you-should-not-sit-on-the-band-edge" class="toc-link" data-depth="2">Why you should not sit on the band edge</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

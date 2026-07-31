@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Matching Networks, Phasing, and Power Dividers · Radio Certification Study System</title><meta name="description" content="Choose between beta, gamma, and stub matching, size a quarter-wave transformer, and say what a Wilkinson divider does that a T-connector does not."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-extra/">Extra</a><span aria-hidden="true">/</span><span>Antennas and Transmission Lines</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Matching Networks, Phasing, and Power Dividers</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Choose between beta, gamma, and stub matching, size a quarter-wave transformer, and say what a Wilkinson divider does that a T-connector does not.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">10 min read</span><a href="/radiocert/objectives/E9E/" class="chip no-underline" style="font-family: var(--font-mono)">E9E</a><span class="chip chip-quiet">Antennas &amp; Feed Lines</span><span class="chip chip-quiet">advanced</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="the-three-yagi-matching-systems">The three Yagi matching systems</h2>
+<p>Each solves the same problem — a driven element that does not present 50 ohms — with
+a different mechanical and electrical arrangement.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>System</th><th>What it is</th><th>Driven element</th></tr></thead><tbody><tr><td><strong>Beta / hairpin</strong></td><td>a <strong>shorted transmission-line stub</strong> at the feed point</td><td><strong>insulated from the boom</strong>, and <strong>capacitive</strong></td></tr><tr><td><strong>Gamma</strong></td><td>feed tapped along the element, with a <strong>series capacitor</strong></td><td>need <strong>not</strong> be insulated</td></tr><tr><td><strong>Stub</strong></td><td>a short length of line <strong>in parallel</strong> with the feed line, some distance from the load</td><td>either</td></tr></tbody></table>
+<blockquote class="pool-qa"><p class="pool-q">Which matching system for Yagi antennas requires the driven element to be
+insulated from the boom?</p><p class="pool-a"><span class="pool-a-text">Beta or hairpin.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">What Yagi driven element feed point impedance is required to use a beta or hairpin
+matching system?</p><p class="pool-a"><span class="pool-a-text">Capacitive (driven element electrically shorter than 1/2 wavelength)</span><span class="pool-gloss"> — the
+driven element electrically shorter than 1/2 wavelength.</span></p></blockquote>
+<p>The hairpin is an inductive shunt, so it needs something capacitive to cancel. A
+deliberately short driven element supplies that.</p>
+<blockquote class="pool-qa"><p class="pool-q">What is the purpose of the series capacitor in a gamma match?</p><p class="pool-a"><span class="pool-a-text">To cancel unwanted inductive reactance.</span></p></blockquote>
+<p>The gamma’s tap introduces inductance; the capacitor removes it. Same cancellation
+logic, opposite direction from the hairpin.</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following is used to shunt feed a grounded tower at its base?</p><p class="pool-a"><span class="pool-a-text">Gamma match.</span></p></blockquote>
+<p>The gamma’s ability to work against a grounded conductor is exactly why it suits a
+grounded tower used as a vertical — nothing needs insulating.</p>
+<blockquote class="pool-qa"><p class="pool-q">What matching system uses a short length of transmission line connected in
+parallel with the feed line at or near the feed point?</p><p class="pool-a"><span class="pool-a-text">Stub match</span></p></blockquote>
+<h2 id="quarter-wave-transformers">Quarter-wave transformers</h2>
+<p>A quarter wavelength of line transforms impedance:</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mn>0</mn></msub><mo>=</mo><msqrt><mrow><msub><mi>Z</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>×</mo><msub><mi>Z</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub></mrow></msqrt></mrow><annotation encoding="application/x-tex">Z_0 = \sqrt{Z_{in} \times Z_{out}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.1883em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8517em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">in</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0715em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.8117em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1883em;"><span></span></span></span></span></span></span></span></span></p>
+<blockquote class="pool-qa"><p class="pool-q">Which of these transmission line impedances would be suitable for constructing a
+quarter-wave Q-section for matching a 100-ohm feed point impedance to a 50-ohm
+transmission line?</p><p class="pool-a"><span class="pool-a-text">75 ohms</span></p></blockquote>
+<p>√(100 × 50) = √5000 = 70.7 ohms — and 75-ohm cable is the standard value closest to
+it. This is the geometric mean, and it is why 75-ohm coax is worth keeping in a
+junk box.</p>
+<h2 id="reflection-coefficient">Reflection coefficient</h2>
+<blockquote class="pool-qa"><p class="pool-q">What parameter describes the interaction of a load and transmission line?</p><p class="pool-a"><span class="pool-a-text">Reflection coefficient.</span></p></blockquote>
+<p>More fundamental than SWR: the reflection coefficient Γ is complex, carrying both
+magnitude and phase, so it describes <em>how</em> the load differs from the line rather
+than merely <em>that</em> it does. SWR is derived from its magnitude alone, which is
+precisely why SWR cannot tell you whether the load is above or below the line
+impedance.</p>
+<p>Γ is also the quantity a Smith chart plots, which is the next lesson.</p>
+<h2 id="power-dividers">Power dividers</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is a use for a Wilkinson divider?</p><p class="pool-a"><span class="pool-a-text">To divide power equally between two 50-ohm loads while maintaining 50-ohm
+input impedance.</span></p></blockquote>
+<p>The two requirements together are the trick. A plain T-connector splits power and
+presents 25 ohms at the input — a 2:1 mismatch. A Wilkinson uses quarter-wave
+sections plus an isolation resistor to split power <strong>and</strong> hold the input at 50
+ohms, with the added benefit that the two outputs are isolated from each other.</p>
+<p>That isolation matters in a stacked-antenna array: a fault in one branch does not
+reflect into the other.</p>
+<h2 id="phasing-lines">Phasing lines</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the purpose of using multiple driven elements connected through phasing
+lines?</p><p class="pool-a"><span class="pool-a-text">To control the antenna’s radiation pattern.</span></p></blockquote>
+<p>The phased-array material from the wire-antennas lesson, stated as a technique. The
+phasing line’s <strong>electrical</strong> length sets the phase relationship — so its velocity
+factor matters, and cutting one to physical length rather than electrical length is
+the classic mistake.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>You need to match a 200-ohm load to 50 ohms with a quarter-wave transformer.
+What line impedance?</li>
+<li>Your tower is grounded and you want to shunt feed it. Which matching system, and
+why not a hairpin?</li>
+<li>Why not simply use a T-connector to feed two stacked Yagis?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li>√(200 × 50) = √10000 = <strong>100 ohms</strong>.</li>
+<li><strong>Gamma match</strong> — it does not require the driven conductor to be insulated,
+which a grounded tower cannot be. A hairpin needs an insulated, capacitive
+element.</li>
+<li>A T-connector presents <strong>25 ohms</strong> at the input and gives no isolation between
+branches. A <strong>Wilkinson divider</strong> splits the power while holding 50 ohms and
+isolating the outputs.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">10 questions from 2024-2028 Amateur Extra (Element 4). Drill them in <a href="/radiocert/practice/?pool=extra-2024&amp;objectives=E9E">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">E9E01 · E9E02 · E9E03 · E9E04 · E9E05 · E9E06 · E9E07 · E9E08 · E9E09 · E9E11</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> E9E</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-extra/antennas/04-yagis-and-short-antennas/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">Yagis, Parabolics, and Electrically Short Antennas</span></a><a href="/radiocert/lessons/amateur-extra/antennas/06-transmission-lines/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Transmission Lines as Circuit Elements</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-extra/antennas/05-impedance-matching" data-lesson-title="Matching Networks, Phasing, and Power Dividers" data-lesson-track="amateur-extra" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#impedance-matching">Power transfers best when impedances match</a></li><li><a href="/radiocert/glossary/#reflection-coefficient">Reflection Coefficient</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#the-three-yagi-matching-systems" class="toc-link" data-depth="2">The three Yagi matching systems</a></li><li><a href="#quarter-wave-transformers" class="toc-link" data-depth="2">Quarter-wave transformers</a></li><li><a href="#reflection-coefficient" class="toc-link" data-depth="2">Reflection coefficient</a></li><li><a href="#power-dividers" class="toc-link" data-depth="2">Power dividers</a></li><li><a href="#phasing-lines" class="toc-link" data-depth="2">Phasing lines</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

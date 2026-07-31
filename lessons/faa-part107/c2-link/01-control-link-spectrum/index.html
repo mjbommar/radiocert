@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Control Link Spectrum and Why Links Fail · Radio Certification Study System</title><meta name="description" content="What spectrum your command-and-control and video links actually use, the physics behind every link failure you will meet, and what an amateur licence does and does not permit."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/faa-part107/">Part 107</a><span aria-hidden="true">/</span><span>The Control Link</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Control Link Spectrum and Why Links Fail</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">What spectrum your command-and-control and video links actually use, the physics behind every link failure you will meet, and what an amateur licence does and does not permit.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">13 min read</span><span class="chip chip-quiet">Signals, Modulation &amp; Modes</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="where-your-aircraft-lives-in-the-spectrum">Where your aircraft lives in the spectrum</h2>
+<p>Almost every consumer and prosumer sUAS uses <strong>unlicensed Part 15 spectrum</strong>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Band</th><th>Typical use</th><th>Character</th></tr></thead><tbody><tr><td><strong>2.4 GHz</strong> (2400–2483.5 MHz)</td><td>command and control, sometimes video</td><td>longer range, far more congested</td></tr><tr><td><strong>5.8 GHz</strong> (5725–5850 MHz)</td><td>video downlink, sometimes C2</td><td>more spectrum, shorter range, more easily blocked</td></tr><tr><td>900 MHz</td><td>long-range C2 on some platforms</td><td>best propagation, least bandwidth</td></tr></tbody></table>
+<p>Two things follow from “Part 15”, and both matter operationally:</p>
+<ul>
+<li><strong>You have no protection from interference.</strong> Part 15 devices must accept
+interference from anyone. Your control link shares 2.4 GHz with every Wi-Fi
+access point, Bluetooth device, and microwave oven in range.</li>
+<li><strong>You need no licence, and your amateur licence buys you nothing here.</strong> The
+equipment is certified; you operate it as a consumer.</li>
+</ul>
+<h2 id="why-links-fail">Why links fail</h2>
+<p>Every lost-link event you will experience is one of five things, and the antennas
+and propagation lessons already explain each.</p>
+<p><strong>1. Distance.</strong> Free-space path loss goes as the square of distance and the
+square of frequency. Doubling the range costs <strong>6 dB</strong>; moving from 2.4 to
+5.8 GHz costs about <strong>7.7 dB</strong> at the same distance. This is why 5.8 GHz video
+drops out well before 2.4 GHz control does — by design, so you lose the picture
+before you lose the aircraft.</p>
+<p><strong>2. Obstruction.</strong> At these frequencies, propagation is essentially
+line-of-sight. A building, a hill, or a stand of trees between you and the
+aircraft attenuates severely. <strong>Your own body counts</strong> — turning your back on the
+aircraft while holding the controller measurably reduces signal.</p>
+<p><strong>3. Fresnel zone intrusion.</strong> Even a clear visual line of sight is not enough:
+the first Fresnel zone must be substantially clear. Flying low over terrain that
+rises between you and the aircraft degrades the link while the aircraft remains
+plainly visible. This is the same effect as the ground gain and take-off angle
+material in the antennas module.</p>
+<p><strong>4. Multipath.</strong> Reflections from buildings, water, and vehicles arrive delayed
+and can cancel the direct path. Near large flat surfaces the link can be worse at
+50 m than at 200 m, which feels like equipment failure and is not.</p>
+<p><strong>5. Co-channel interference.</strong> A crowded 2.4 GHz environment — an event, an
+industrial site, an apartment block — raises the noise floor until your link
+budget disappears. <strong>This is measurable before you fly</strong>: point the SDR from the
+lab track at 2.4 GHz and look at the occupancy.</p>
+<h2 id="antenna-behaviour">Antenna behaviour</h2>
+<p>Controller antennas are usually simple dipoles or patches, and their pattern
+matters more than people expect.</p>
+<ul>
+<li><strong>A dipole radiates broadside, not off its ends.</strong> Pointing the controller’s
+antenna tips directly at the aircraft puts it in the pattern <strong>null</strong> — the
+worst possible orientation, and the most common mistake.</li>
+<li><strong>Keep the antennas broadside to the aircraft</strong>: perpendicular to the line
+between you and it, and roughly vertical for a hovering aircraft.</li>
+<li><strong>A directional patch or helical</strong> adds gain and range at the cost of a narrow
+beam you must keep pointed. Useful for long linear missions, actively harmful
+if the aircraft manoeuvres around you.</li>
+<li><strong>Height helps disproportionately.</strong> Raising the controller a metre or two, or
+standing on a vehicle, often recovers a marginal link, because it clears the
+Fresnel zone.</li>
+</ul>
+<h2 id="lost-link">Lost link</h2>
+<blockquote>
+<p><strong>§107.21</strong> — In an in-flight emergency, the remote pilot in command may
+deviate from any rule of this part to the extent necessary to meet that
+emergency. A deviation must be reported to the Administrator on request.</p>
+</blockquote>
+<p>Lost link is the emergency Part 107 most anticipates. The aircraft’s programmed
+behaviour — usually return-to-home — executes without you, so the pre-flight
+configuration <strong>is</strong> the emergency procedure:</p>
+<ul>
+<li><strong>Verify the return-to-home altitude clears every obstacle</strong> between the
+operating area and the home point. An RTH altitude below a nearby tree line is
+a scripted collision.</li>
+<li><strong>Confirm the home point</strong> is set where you actually are, especially after
+moving the control station.</li>
+<li><strong>Know the failsafe behaviour</strong>: hover, land, or return. They fail very
+differently over water, over a road, or over people.</li>
+</ul>
+<h2 id="what-the-amateur-bands-can-and-cannot-do">What the amateur bands can and cannot do</h2>
+<p>Amateur allocations overlap the drone bands — 2.4 GHz is the 13 cm amateur band,
+and 5.8 GHz is within the 5 cm band — so the question comes up constantly. The
+answer is narrower than it looks.</p>
+<p><strong>What an amateur licence permits:</strong> operating amateur-licensed equipment,
+including FPV video links designed for Part 97, under amateur rules — with the
+higher power limits and the antenna gain those allow.</p>
+<p><strong>What it does not permit:</strong></p>
+<ul>
+<li><strong>Anything with a pecuniary interest.</strong> §97.113 prohibits communications in
+which you or your employer have a financial stake. <strong>A commercial Part 107
+flight cannot use an amateur-band link, ever.</strong> This is the single most
+important point in this lesson.</li>
+<li><strong>Encrypted control links.</strong> Obscuring the meaning of a transmission is
+prohibited under Part 97, and most commercial C2 protocols are encrypted.</li>
+<li><strong>Operating a Part 15 certified radio at amateur power levels.</strong> Modifying
+certified equipment moves it out of its certification, and a certified device
+is not an amateur transmitter merely because you hold a licence.</li>
+</ul>
+<p><strong>Practically:</strong> amateur-band FPV is a legitimate hobby activity for recreational
+flight under Part 97 rules. For Part 107 work, use the Part 15 equipment the
+aircraft shipped with.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Your video drops out at 400 m but control is solid. Broken, or expected?</li>
+<li>You are flying over a large car park and the link is worse close in than
+further out. Why?</li>
+<li>You are being paid to inspect a roof and want to use your 2.4 GHz amateur FPV
+gear for a better picture. May you?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>Expected.</strong> 5.8 GHz video has roughly <strong>7.7 dB</strong> more path loss than the
+2.4 GHz control link at the same distance, so the picture is designed to fail
+before the aircraft does.</li>
+<li><strong>Multipath.</strong> Reflections from the flat surface and the vehicles arrive
+delayed and can cancel the direct path at particular geometries.</li>
+<li><strong>No.</strong> §97.113 prohibits communications in which you or your employer have a
+<strong>pecuniary interest</strong>. A paid flight rules out the amateur bands entirely.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">cfr</span> 14 CFR 107.21<span style="color: var(--ink-muted)"> (verified 2026-07-30)</span></li><li><span class="chip">cfr</span> 47 CFR 97.113<span style="color: var(--ink-muted)"> (verified 2026-07-30)</span></li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><span class="flex-1"></span><a href="/radiocert/tracks/faa-part107/" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">End of module</span><span class="font-medium">Back to Part 107</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="faa-part107/c2-link/01-control-link-spectrum" data-lesson-title="Control Link Spectrum and Why Links Fail" data-lesson-track="faa-part107" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#frequency">Frequency</a></li><li><a href="/radiocert/glossary/#antenna-gain">Antenna Gain</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#where-your-aircraft-lives-in-the-spectrum" class="toc-link" data-depth="2">Where your aircraft lives in the spectrum</a></li><li><a href="#why-links-fail" class="toc-link" data-depth="2">Why links fail</a></li><li><a href="#antenna-behaviour" class="toc-link" data-depth="2">Antenna behaviour</a></li><li><a href="#lost-link" class="toc-link" data-depth="2">Lost link</a></li><li><a href="#what-the-amateur-bands-can-and-cannot-do" class="toc-link" data-depth="2">What the amateur bands can and cannot do</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>How VHF and UHF Signals Actually Travel · Radio Certification Study System</title><meta name="description" content="Explain multipath, picket fencing, and cross-polarisation loss, and know what vegetation, rain, and terrain do to a signal at each band."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-technician/">Technician</a><span aria-hidden="true">/</span><span>Radio Wave Propagation</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">How VHF and UHF Signals Actually Travel</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Explain multipath, picket fencing, and cross-polarisation loss, and know what vegetation, rain, and terrain do to a signal at each band.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">10 min read</span><a href="/radiocert/objectives/T3A/" class="chip no-underline" style="font-family: var(--font-mono)">T3A</a><span class="chip chip-quiet">Propagation</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="multipath-the-same-signal-twice">Multipath: the same signal, twice</h2>
+<p>A VHF signal reaching a receiver has usually taken more than one path — direct,
+plus reflections from buildings, terrain, vehicles, and the ground. Those copies
+arrive at slightly different times, and where they meet they add or cancel.</p>
+<blockquote class="pool-qa"><p class="pool-q">Why do VHF signal strengths sometimes vary greatly when the antenna is moved
+only a few feet?</p><p class="pool-a"><span class="pool-a-text">Multipath propagation cancels or reinforces signals.</span></p></blockquote>
+<p><em>A few feet</em> is the tell. At 146 MHz a wavelength is about two metres, so moving
+a metre can swing you from constructive to destructive interference. This is why
+walking three steps with a handheld sometimes fixes a marginal contact, and why
+it is worth trying before assuming you are out of range.</p>
+<p>The mobile version has its own name:</p>
+<blockquote class="pool-qa"><p class="pool-q">What is the meaning of the term “picket fencing”?</p><p class="pool-a"><span class="pool-a-text">Rapid flutter on mobile signals due to multipath propagation.</span></p></blockquote>
+<p>A moving vehicle sweeps through the interference pattern continuously, so the
+signal rises and falls several times a second — a rasping flutter that sounds
+like driving past a picket fence.</p>
+<p><strong>Multipath also hurts data.</strong> Delayed copies smear symbol boundaries, so
+<strong>error rates are likely to increase</strong>. It is the reason digital modes designed
+for mobile use build in heavy error correction.</p>
+<h2 id="polarisation-again--and-it-costs-you">Polarisation, again — and it costs you</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the effect of antenna cross-polarization over a line-of-sight VHF or
+UHF path?</p><p class="pool-a"><span class="pool-a-text">Received signal strength is reduced.</span></p></blockquote>
+<p>Substantially reduced — typically 20 dB or more. Hence the two conventions:</p>
+<ul>
+<li><strong>FM repeater work: vertical</strong>, because handhelds and mobile whips are.</li>
+<li><strong>Long-distance CW and SSB on VHF: horizontal.</strong></li>
+</ul>
+<blockquote class="pool-qa"><p class="pool-q">What antenna polarization is normally used for long-distance CW and SSB
+contacts on the VHF and UHF bands?</p><p class="pool-a"><span class="pool-a-text">Horizontal.</span></p></blockquote>
+<p>Ionospheric propagation is different. Signals that have bounced off the
+ionosphere have had their polarisation scrambled along the way, so <strong>either
+vertically or horizontally polarised antennas may be used</strong> for HF work. The
+polarisation discipline is a VHF and UHF line-of-sight concern.</p>
+<h2 id="what-the-atmosphere-does-at-each-band">What the atmosphere does at each band</h2>
+<p>The pattern to hold: <strong>higher frequency, more affected by physical obstacles and
+weather.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Effect</th><th>10 m and 6 m</th><th>UHF and microwave</th></tr></thead><tbody><tr><td>Fog or rain</td><td><strong>little effect</strong></td><td><strong>precipitation decreases range</strong> at microwave</td></tr><tr><td>Vegetation</td><td>little effect</td><td><strong>absorbs signals</strong>, hurting weak reception</td></tr></tbody></table>
+<blockquote class="pool-qa"><p class="pool-q">How does vegetation affect UHF and microwave signals?</p><p class="pool-a"><span class="pool-a-text">Absorbs signals, leading to poor reception of weak signals.</span></p></blockquote>
+<p>At microwave the wavelength approaches the size of leaves and raindrops, so they
+scatter and absorb. At 6 metres the wavelength is metres long and a tree is
+barely there. This is the single most useful reason to prefer VHF over UHF in
+wooded terrain — and why MURS at 151 MHz beats GMRS at 462 MHz in the woods.</p>
+<h2 id="getting-around-obstructions">Getting around obstructions</h2>
+<blockquote class="pool-qa"><p class="pool-q">When using a directional antenna, how might your station be able to
+communicate with a distant repeater if buildings or obstructions are blocking
+the direct line of sight path?</p><p class="pool-a"><span class="pool-a-text">Try to find a path that reflects signals to the repeater.</span></p></blockquote>
+<p>Point the beam at a building, a hillside, or a water tower and bounce off it.
+This works far better than intuition suggests, and it is the standard trick for
+working a repeater from behind a ridge.</p>
+<p>The related mechanism:</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following effects may allow radio signals to travel beyond
+obstructions between the transmitting and receiving stations?</p><p class="pool-a"><span class="pool-a-text">Knife-edge diffraction.</span></p></blockquote>
+<p>A sharp obstruction — a ridge line, a building edge — bends the wave around it,
+so signal appears in the geometric shadow. A sharp edge diffracts better than a
+rounded hill, which is why a knife-edge ridge is sometimes an asset rather than
+an obstacle.</p>
+<h2 id="ionospheric-fading">Ionospheric fading</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is a likely cause of irregular fading of signals propagated by the
+ionosphere?</p><p class="pool-a"><span class="pool-a-text">Random combining of signals arriving via different paths.</span></p></blockquote>
+<p>The same multipath mechanism as VHF, on a continental scale: signals taking one
+hop and two hops arrive with different delays and combine randomly as the
+ionosphere shifts. <strong>The ionosphere is the region of the atmosphere that can
+reflect HF radio waves</strong> — and the next lesson is about what it does and does not
+do for a Technician.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Your handheld barely reaches a repeater. What costs nothing to try first?</li>
+<li>You are choosing between 2 metres and 70 centimetres for a wooded park.
+Which, and why?</li>
+<li>A friend with a horizontal Yagi cannot hear your vertical whip on 2 metres,
+line of sight. Explain.</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>Move a metre or two.</strong> Multipath means signal strength can vary greatly
+over a fraction of a wavelength.</li>
+<li><strong>2 metres.</strong> Vegetation absorbs UHF and microwave far more; at VHF the
+wavelength is long enough that foliage matters much less.</li>
+<li><strong>Cross-polarisation.</strong> Vertical to horizontal over a line-of-sight VHF path
+costs 20 dB or more of received signal strength.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">12 questions from 2026-2030 Technician (Element 2). Drill them in <a href="/radiocert/practice/?pool=tech-2026&amp;objectives=T3A">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">T3A01 · T3A02 · T3A03 · T3A04 · T3A05 · T3A06 · T3A07 · T3A08 · T3A09 · T3A10 · T3A11 · T3A12</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> T3A</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-technician/propagation/01-what-a-radio-wave-is/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">What a Radio Wave Is</span></a><a href="/radiocert/lessons/amateur-technician/propagation/03-beyond-the-horizon/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Beyond the Horizon</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-technician/propagation/02-how-vhf-signals-travel" data-lesson-title="How VHF and UHF Signals Actually Travel" data-lesson-track="amateur-technician" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#wavelength">Wavelength</a></li><li><a href="/radiocert/glossary/#antenna-gain">Antenna Gain</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#multipath-the-same-signal-twice" class="toc-link" data-depth="2">Multipath: the same signal, twice</a></li><li><a href="#polarisation-again--and-it-costs-you" class="toc-link" data-depth="2">Polarisation, again — and it costs you</a></li><li><a href="#what-the-atmosphere-does-at-each-band" class="toc-link" data-depth="2">What the atmosphere does at each band</a></li><li><a href="#getting-around-obstructions" class="toc-link" data-depth="2">Getting around obstructions</a></li><li><a href="#ionospheric-fading" class="toc-link" data-depth="2">Ionospheric fading</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

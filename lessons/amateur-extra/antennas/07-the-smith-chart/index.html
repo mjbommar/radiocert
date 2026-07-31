@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Smith Chart · Radio Certification Study System</title><meta name="description" content="Identify every feature of a Smith chart, say what normalisation means, and know which problems it solves that arithmetic solves badly."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-extra/">Extra</a><span aria-hidden="true">/</span><span>Antennas and Transmission Lines</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">The Smith Chart</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Identify every feature of a Smith chart, say what normalisation means, and know which problems it solves that arithmetic solves badly.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">13 min read</span><a href="/radiocert/objectives/E9G/" class="chip no-underline" style="font-family: var(--font-mono)">E9G</a><span class="chip chip-quiet">Antennas &amp; Feed Lines</span><span class="chip chip-quiet">advanced</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="what-it-is-for">What it is for</h2>
+<p>A Smith chart is a graphical calculator for transmission-line problems. It was
+invented in the 1930s to avoid complex arithmetic, and it survives because it makes
+the <em>behaviour</em> visible in a way the arithmetic does not.</p>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following can be calculated using a Smith chart?</p><p class="pool-a"><span class="pool-a-text">Impedance along transmission lines.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following is often determined using a Smith chart?</p><p class="pool-a"><span class="pool-a-text">Impedance and SWR values in transmission lines.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following is a common use for a Smith chart?</p><p class="pool-a"><span class="pool-a-text">Determine the length and position of an impedance matching stub.</span></p></blockquote>
+<p>That last one is the killer application. Finding stub length and position
+algebraically is tedious; on a Smith chart it is two arcs and a reading.</p>
+<h2 id="the-coordinate-system">The coordinate system</h2>
+<p><img src="/radiocert/figures/pool/extra-2024/E9-3.svg" alt="Pool figure E9-3"></p>
+<blockquote class="pool-qa"><p class="pool-q">What type of coordinate system is used in a Smith chart?</p><p class="pool-a"><span class="pool-a-text">Resistance circles and reactance arcs.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">What are the two families of circles and arcs that make up a Smith chart?</p><p class="pool-a"><span class="pool-a-text">Resistance and reactance.</span></p></blockquote>
+<blockquote class="pool-qa"><p class="pool-q">What do the arcs on a Smith chart represent?</p><p class="pool-a"><span class="pool-a-text">Points with constant reactance.</span></p></blockquote>
+<p>The features the pool asks you to name on the figure:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th>Name</th></tr></thead><tbody><tr><td><strong>The large outer circle</strong></td><td><strong>reactance axis</strong></td></tr><tr><td><strong>The only straight line</strong></td><td><strong>the resistance axis</strong></td></tr><tr><td>Circles tangent to the outer circle</td><td>constant resistance</td></tr><tr><td>Arcs meeting at the right-hand point</td><td>constant reactance</td></tr><tr><td>Optional third family added when matching</td><td><strong>constant-SWR circles</strong></td></tr></tbody></table>
+<p>The straight horizontal line is where reactance is zero — the resistance axis — and
+it runs from a short circuit at the left, through the prime centre, to an open
+circuit at the right.</p>
+<blockquote class="pool-qa"><p class="pool-q">What third family of circles is often added to a Smith chart during the process of
+designing impedance matching networks?</p><p class="pool-a"><span class="pool-a-text">Constant-SWR circles</span></p></blockquote>
+<p>Circles centred on the prime centre. Since SWR depends only on the magnitude of the
+reflection coefficient, constant SWR is a constant radius — which is why moving
+along a lossless line traces a <strong>circle</strong> on the chart. That single geometric fact
+is what makes the chart work.</p>
+<figure class="lesson-figure"><img src="/radiocert/figures/smith-chart-geometry.svg" alt="A Smith chart inside the unit circle of the reflection-coefficient plane. Constant-resistance circles for normalised r of 0, 0.5, 1, 2 and 5 are all tangent to the unit circle at its right-hand point. Constant-reactance arcs for x of plus and minus 0.5, 1 and 2 also converge on that same right-hand point, curving upward above the horizontal axis and downward below it. A dashed circle centred on the middle marks a constant standing-wave ratio of 3. A marked point plots the normalised load 1 plus j1. The left-hand edge is labelled short circuit, the centre is labelled matched, and the right-hand edge is labelled open circuit." loading="lazy" decoding="async" data-theme-figure="light"><img src="/radiocert/figures/smith-chart-geometry-dark.svg" alt="A Smith chart inside the unit circle of the reflection-coefficient plane. Constant-resistance circles for normalised r of 0, 0.5, 1, 2 and 5 are all tangent to the unit circle at its right-hand point. Constant-reactance arcs for x of plus and minus 0.5, 1 and 2 also converge on that same right-hand point, curving upward above the horizontal axis and downward below it. A dashed circle centred on the middle marks a constant standing-wave ratio of 3. A marked point plots the normalised load 1 plus j1. The left-hand edge is labelled short circuit, the centre is labelled matched, and the right-hand edge is labelled open circuit." loading="lazy" decoding="async" data-theme-figure="dark"><figcaption><strong>Smith chart geometry: where the circles come from.</strong> Every curve here is a circle, because Gamma = (z-1)/(z+1) is a Möbius transform and Möbius transforms map circles and lines to circles and lines. Constant resistance and constant reactance are straight lines in the impedance plane; they arrive as circles. Both families pass through Gamma = +1, the open circuit, which is the point the whole chart is built around.</figcaption></figure>
+<details>
+<summary><strong>Why every one of those curves is a circle</strong></summary>
+<p>The chart is a picture of one function. Normalise impedance to the system
+impedance, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>r</mi><mo>+</mo><mi>j</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">z = r + jx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0572em;">j</span><span class="mord mathnormal">x</span></span></span></span>, and plot the reflection coefficient</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>=</mo><mfrac><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">\Gamma = \frac{z-1}{z+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Γ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2484em;vertical-align:-0.4033em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.044em;">z</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.044em;">z</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>This is a <strong>Möbius transformation</strong> — a ratio of two linear functions — and
+Möbius maps have a property that does all the work here: <strong>they map circles and
+lines to circles and lines</strong>. (A line is just a circle through the point at
+infinity, so it is really one rule.)</p>
+<p>In the impedance plane, “constant resistance” and “constant reactance” are
+<em>straight lines</em>: vertical and horizontal rulings of the right half-plane. Push
+them through <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Γ</mi></mrow><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Γ</span></span></span></span> and they must come out as circles. Working out which:</p>
+<span class="katex-error" title="ParseError: KaTeX parse error: Can&#x27;t use function &#x27;$&#x27; in math mode at position 99: …= \frac{1}{|x|}$̲$
+
+Read those o…" style="color:#cc0000">\qquad
+\text{constant } x:\quad \left|\Gamma - \left(1 + \frac{j}{x}\right)\right| = \frac{1}{|x|}$$
+
+Read those off. **Every constant-$r$ circle is centred on the real axis and
+passes through $\Gamma = +1$.** **Every constant-$x$ circle is centred on the
+vertical line through $\Gamma = +1$ and passes through it too.** That common
+point is the open circuit, which is why the whole chart appears to be drawn
+around its right-hand edge — every curve on it goes through that one point.
+
+Two more consequences worth having:
+
+- **$r = 0$ maps to the unit circle itself.** A purely reactive load reflects
+  everything, so $|\Gamma| = 1$. The outer boundary is not decoration; it is the
+  $r = 0$ member of the same family.
+- **The right half-plane maps to the unit disc.** Any passive load has
+  $r \ge 0$, so it lands inside. A point *outside* the chart would mean
+  $|\Gamma| > 1$ — more power coming back than went in — which is why a
+  negative-resistance oscillator is drawn on an extended chart and a passive
+  antenna never is.
+
+The plotted point is $z = 1 + j1$: $\Gamma = 0.2 + j0.4$, so $|\Gamma| = 0.447$
+and SWR $= 1.447/0.553 = 2.62$. It sits just inside the SWR = 3 circle, as it
+must.
+
+*The circle centres and radii above are verified against scikit-rf's own
+mapping in `scripts/tests/test_rf_numbers.py`.*
+
+&#x3C;/details>
+
+## Normalisation
+
+> **How is a Smith chart normalized?**
+> **Reassign the prime center's impedance value.**
+
+The chart's centre is 1.0 — a perfect match — and every impedance is expressed as a
+multiple of the system impedance. Set the prime centre to 50 ohms and a 100-ohm load
+plots at 2.0; set it to 75 and the same load plots at 1.33.
+
+Normalisation is why one printed chart serves every system impedance.
+
+## The wavelength scales
+
+> **In what units are the wavelength scales on a Smith chart calibrated?**
+> **In fractions of transmission line electrical wavelength.**
+
+**Electrical** wavelength — so velocity factor is already accounted for, and the
+distances you read off must be converted to physical length before you cut
+anything. The transmission-lines lesson has the conversion.
+
+One full trip round the chart is a **half** wavelength of line, not a whole one,
+which follows from the half-wave repeat rule: a half wavelength returns you to where
+you started.
+
+## Why it is worth learning despite the calculators
+
+A NanoVNA draws a Smith chart on its screen, so the chart has outlived the
+arithmetic it replaced. What it gives you is **intuition**:
+
+- Moving along a line is rotation. Clockwise toward the generator.
+- A high-SWR load is far from centre; matching means moving inward.
+- A series reactance moves you along a constant-resistance circle; a shunt
+  reactance moves you along a constant-conductance circle. That is the whole
+  design procedure for an L-network.
+
+None of those are visible in a table of numbers.
+
+## Check yourself
+
+1. What does the only straight line on a Smith chart represent?
+2. A load plots at 2.0 + j0 on a chart normalised to 50 ohms. What is the actual
+   impedance, and the SWR?
+3. How much line does one complete rotation around the chart correspond to?
+
+&#x3C;details>
+&#x3C;summary>Answers&#x3C;/summary>
+
+1. **The resistance axis** — where reactance is zero.
+2. 2.0 × 50 = **100 ohms resistive**, and SWR = 100/50 = **2:1**.
+3. **A half wavelength** of electrical length.
+
+&#x3C;/details></span></details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">11 questions from 2024-2028 Amateur Extra (Element 4). Drill them in <a href="/radiocert/practice/?pool=extra-2024&amp;objectives=E9G">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">E9G01 · E9G02 · E9G03 · E9G04 · E9G05 · E9G06 · E9G07 · E9G08 · E9G09 · E9G10 · E9G11</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> E9G</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-extra/antennas/06-transmission-lines/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">Transmission Lines as Circuit Elements</span></a><a href="/radiocert/lessons/amateur-extra/antennas/08-receiving-antennas/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Receiving Antennas and Direction Finding</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-extra/antennas/07-the-smith-chart" data-lesson-title="The Smith Chart" data-lesson-track="amateur-extra" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#reflection-coefficient">Reflection Coefficient</a></li><li><a href="/radiocert/glossary/#impedance">Impedance</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#what-it-is-for" class="toc-link" data-depth="2">What it is for</a></li><li><a href="#the-coordinate-system" class="toc-link" data-depth="2">The coordinate system</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

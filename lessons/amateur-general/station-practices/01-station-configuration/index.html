@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Configuring an HF Station · Radio Certification Study System</title><meta name="description" content="Use the receiver controls that dig a signal out of interference, tune an amplifier correctly, and know when ALC must be switched off."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-general/">General</a><span aria-hidden="true">/</span><span>Station Practices</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Configuring an HF Station</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Use the receiver controls that dig a signal out of interference, tune an amplifier correctly, and know when ALC must be switched off.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">11 min read</span><a href="/radiocert/objectives/G4A/" class="chip no-underline" style="font-family: var(--font-mono)">G4A</a><span class="chip chip-quiet">Station Equipment</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="the-interference-fighting-controls">The interference-fighting controls</h2>
+<p>A modern HF receiver has four distinct tools, and each addresses a different
+problem. Using the wrong one wastes effort.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Control</th><th>Fixes</th><th>How</th></tr></thead><tbody><tr><td><strong>Notch filter</strong></td><td><strong>a carrier in the passband</strong></td><td>narrow notch at one frequency</td></tr><tr><td><strong>Noise blanker</strong></td><td><strong>impulse noise</strong></td><td><strong>reduces receiver gain during a noise pulse</strong></td></tr><tr><td><strong>Noise reduction</strong></td><td>broadband hiss</td><td>DSP processing</td></tr><tr><td><strong>Attenuator</strong></td><td><strong>overload from strong signals</strong></td><td>reduces front-end level</td></tr></tbody></table>
+<blockquote class="pool-qa"><p class="pool-q">What is the purpose of the notch filter found on many HF transceivers?</p><p class="pool-a"><span class="pool-a-text">To reduce interference from carriers in the receiver passband.</span></p></blockquote>
+<p>A single heterodyne — a carrier whistling away in your passband — is what a notch
+removes. It does nothing for hiss or for another SSB signal.</p>
+<blockquote class="pool-qa"><p class="pool-q">How does a noise blanker work?</p><p class="pool-a"><span class="pool-a-text">By reducing receiver gain during a noise pulse.</span></p></blockquote>
+<p>It gates the receiver off for the microseconds a pulse lasts. Excellent for
+ignition noise and electric fence clicks; useless for continuous noise, and it can
+make matters worse in the presence of strong signals, which it mistakes for pulses.</p>
+<blockquote class="pool-qa"><p class="pool-q">What happens as a receiver’s noise reduction control level is increased?</p><p class="pool-a"><span class="pool-a-text">Received signals may become distorted.</span></p></blockquote>
+<p>DSP noise reduction guesses which parts of the signal are noise, and the harder you
+push it the more of the wanted signal it discards. Voices acquire a hollow,
+underwater quality. Use the least that helps.</p>
+<blockquote class="pool-qa"><p class="pool-q">What is the purpose of using a receive attenuator?</p><p class="pool-a"><span class="pool-a-text">To prevent receiver overload from strong incoming signals.</span></p></blockquote>
+<p>Counterintuitive but real: reducing signal level can <em>improve</em> what you hear, by
+keeping the front end out of the region where it generates intermodulation. On a
+crowded low band in the evening, switching in 10 dB of attenuation frequently
+reveals signals that were buried in the receiver’s own products.</p>
+<blockquote class="pool-qa"><p class="pool-q">What is the benefit of using the opposite or “reverse” sideband when receiving
+CW?</p><p class="pool-a"><span class="pool-a-text">It may be possible to reduce or eliminate interference from other signals</span></p></blockquote>
+<p>Demodulating on the other sideband flips the passband about the carrier, so an
+interfering signal that was inside it may now fall outside. Free, and often
+effective.</p>
+<h2 id="dual-vfo">Dual VFO</h2>
+<blockquote class="pool-qa"><p class="pool-q">Which of the following is a common use of the dual-VFO feature on a
+transceiver?</p><p class="pool-a"><span class="pool-a-text">To transmit on one frequency and listen on another.</span></p></blockquote>
+<p>Split operation — essential for working a DX station that listens away from its
+transmit frequency, and for any pile-up.</p>
+<h2 id="amplifier-tuning">Amplifier tuning</h2>
+<p>Tube amplifiers still populate HF stations, and their two controls are asked
+directly.</p>
+<blockquote class="pool-qa"><p class="pool-q">What is the effect on plate current of the correct setting of a vacuum-tube RF
+power amplifier’s TUNE control?</p><p class="pool-a"><span class="pool-a-text">A pronounced dip</span></p></blockquote>
+<p>TUNE resonates the output network. Sweep it and plate current falls sharply at
+resonance — the dip is the indicator, and it is unmistakable.</p>
+<blockquote class="pool-qa"><p class="pool-q">What is the correct adjustment for the LOAD or COUPLING control of a vacuum tube
+RF power amplifier?</p><p class="pool-a"><span class="pool-a-text">Desired power output without exceeding maximum allowable plate current</span></p></blockquote>
+<p>LOAD sets how tightly the tube couples to the load. Tune for the dip, load for
+output, re-dip, repeat. Both limits matter: enough output, without exceeding plate
+current.</p>
+<h2 id="alc-and-when-to-switch-it-off">ALC, and when to switch it off</h2>
+<blockquote class="pool-qa"><p class="pool-q">Why is automatic level control (ALC) used with an RF power amplifier?</p><p class="pool-a"><span class="pool-a-text">To prevent excessive drive.</span></p></blockquote>
+<p>The amplifier feeds a control voltage back to the exciter, which reduces drive
+before the amplifier is overdriven. A protection loop.</p>
+<p>And the exception that catches people:</p>
+<blockquote class="pool-qa"><p class="pool-q">Why should the ALC system be inactive when transmitting AFSK data signals?</p><p class="pool-a"><span class="pool-a-text">The ALC action distorts the signal.</span></p></blockquote>
+<p>ALC is designed for the peaks of speech. A constant-amplitude data signal makes it
+act continuously, and its action is a non-linear amplitude change — which produces
+exactly the intermodulation sidebands the digital-modes lesson taught you to look
+for on a waterfall.</p>
+<p><strong>For digital modes: switch ALC out of circuit and set drive manually, below the
+level at which anything limits.</strong></p>
+<h2 id="amplifier-sequencing">Amplifier sequencing</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the purpose of delaying RF output after activating a transmitter’s keying
+line to an external amplifier?</p><p class="pool-a"><span class="pool-a-text">To allow time for the amplifier to switch the antenna between the transceiver and
+the amplifier output</span></p></blockquote>
+<p>Relays take milliseconds. Send RF before they have finished moving and you arc the
+contacts — destroying the relay and, often, the amplifier’s input circuit. The
+delay is not a convenience; it is what keeps hot-switching from happening.</p>
+<h2 id="antenna-tuner-stated-precisely">Antenna tuner, stated precisely</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the purpose of an antenna tuner?</p><p class="pool-a"><span class="pool-a-text">Increase power transfer from the transmitter to the feed line.</span></p></blockquote>
+<p>Read that carefully. <strong>To the feed line</strong> — not to the antenna. It matches at the
+tuner, and the standing wave beyond it is unchanged. The General antennas module
+makes the same point from the SWR side.</p>
+<h2 id="electronic-keyer">Electronic keyer</h2>
+<blockquote class="pool-qa"><p class="pool-q">What is the function of an electronic keyer?</p><p class="pool-a"><span class="pool-a-text">Automatic generation of dots and dashes for CW operation.</span></p></blockquote>
+<p>You supply the rhythm from a paddle; the keyer supplies the timing.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>A steady whistle sits in your SSB passband. Which control?</li>
+<li>Ignition noise from passing cars. Which control?</li>
+<li>You are about to run FT8 through a linear amplifier. What must you do about
+ALC?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>Notch filter</strong> — it removes a single carrier in the passband.</li>
+<li><strong>Noise blanker</strong> — it gates the receiver off during each pulse.</li>
+<li><strong>Switch it out of circuit</strong> and set drive manually. ALC action on a
+constant-amplitude signal distorts it and generates intermodulation sidebands.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">13 questions from 2023-2027 General (Element 3). Drill them in <a href="/radiocert/practice/?pool=gen-2023&amp;objectives=G4A">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">G4A01 · G4A02 · G4A03 · G4A04 · G4A05 · G4A06 · G4A07 · G4A08 · G4A09 · G4A10 · G4A11 · G4A12 · G4A13</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> G4A</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><span class="flex-1"></span><a href="/radiocert/lessons/amateur-general/station-practices/02-test-equipment/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Tests and Test Equipment</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-general/station-practices/01-station-configuration" data-lesson-title="Configuring an HF Station" data-lesson-track="amateur-general" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#frequency">Frequency</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#the-interference-fighting-controls" class="toc-link" data-depth="2">The interference-fighting controls</a></li><li><a href="#dual-vfo" class="toc-link" data-depth="2">Dual VFO</a></li><li><a href="#amplifier-tuning" class="toc-link" data-depth="2">Amplifier tuning</a></li><li><a href="#alc-and-when-to-switch-it-off" class="toc-link" data-depth="2">ALC, and when to switch it off</a></li><li><a href="#amplifier-sequencing" class="toc-link" data-depth="2">Amplifier sequencing</a></li><li><a href="#antenna-tuner-stated-precisely" class="toc-link" data-depth="2">Antenna tuner, stated precisely</a></li><li><a href="#electronic-keyer" class="toc-link" data-depth="2">Electronic keyer</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

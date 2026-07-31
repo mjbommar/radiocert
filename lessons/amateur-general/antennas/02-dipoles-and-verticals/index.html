@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dipoles and Verticals · Radio Certification Study System</title><meta name="description" content="Cut a dipole or monopole to length, predict its pattern and feed point impedance, and lay out a radial system that works."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/amateur-general/">General</a><span aria-hidden="true">/</span><span>Antennas and Feed Lines</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Dipoles and Verticals</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Cut a dipole or monopole to length, predict its pattern and feed point impedance, and lay out a radial system that works.</p><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">11 min read</span><a href="/radiocert/objectives/G9B/" class="chip no-underline" style="font-family: var(--font-mono)">G9B</a><span class="chip chip-quiet">Antennas &amp; Feed Lines</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><article id="lesson-body" class="prose-lesson mt-10"><h2 id="cutting-to-length">Cutting to length</h2>
+<span class="katex-error" title="ParseError: KaTeX parse error: Can&#x27;t use function &#x27;$&#x27; in math mode at position 88: …wave monopole)}$̲$
+
+The monopole…" style="color:#cc0000">\qquad
+L_{\text{feet}} = \frac{234}{f_{\text{MHz}}} \quad\text{(quarter-wave monopole)}$$
+
+The monopole figure is half the dipole figure, because a monopole is one half of a
+dipole with the ground plane supplying the other half.
+
+**Three worked answers the pool asks:**
+
+| Band | Frequency | Antenna | Length |
+|---|---|---|---|
+| 20 m | 14.250 MHz | half-wave dipole | 468 / 14.25 = **33 feet** |
+| 80 m | 3.550 MHz | half-wave dipole | 468 / 3.55 = **132 feet** |
+| 10 m | 28.5 MHz | quarter-wave monopole | 234 / 28.5 = **8 feet** |
+
+Why 468 and not 492 — the true free-space half wavelength in feet? Because a real
+wire has an **end effect**: capacitance at the ends makes it behave electrically
+longer than it is, so the physical cut comes out about 5% short. Height, wire
+diameter, and nearby objects shift it further, which is why the number is a
+starting point. **Cut long and trim.**
+
+## Patterns
+
+> **What is the radiation pattern of a dipole antenna in free space in a plane
+> containing the conductor?**
+> **It is a figure-eight at right angles to the antenna**
+
+Maximum broadside, nulls off the ends. Which way you hang the wire decides who
+hears you: an east-west dipole favours north and south.
+
+> **Which of the following best describes the radiation pattern of a quarter-wave
+> ground-plane vertical antenna?**
+> **Omnidirectional in azimuth.**
+
+Equal in all compass directions. That is a vertical's advantage and its
+limitation — no favoured direction to exploit, and no null to reject
+interference with.
+
+And the height effect, which surprises people:
+
+> **How does antenna height affect the azimuthal radiation pattern of a horizontal
+> dipole HF antenna at elevation angles higher than about 45 degrees?**
+> **If the antenna is less than 1/2 wavelength high, the azimuthal pattern is almost
+> omnidirectional**
+
+A dipole close to ground loses its figure-eight. The ground reflection dominates,
+the pattern fills in, and the radiation goes mostly upward. So a low dipole is
+both omnidirectional *and* a poor DX antenna — the two facts have the same cause,
+and the NVIS lesson in the propagation module is the case where you want exactly
+that.
+
+## Feed point impedance
+
+Two questions that are mirror images and both worth understanding rather than
+memorising.
+
+> **How does the feed point impedance of a horizontal 1/2 wave dipole antenna change
+> as the antenna height is reduced to 1/10 wavelength above ground?**
+> **It steadily decreases**
+
+> **How does the feed point impedance of a 1/2 wave dipole change as the feed point is
+> moved from the center toward the ends?**
+> **It steadily increases**
+
+The second follows from the current distribution. A half-wave dipole has maximum
+current at the centre and maximum voltage at the ends. Impedance is voltage over
+current, so it is lowest at the centre — around 50 to 70 ohms — and rises toward
+the ends, reaching thousands of ohms. That is why a dipole is fed at the centre
+and why an end-fed wire needs a very different matching arrangement.
+
+## Verticals and radials
+
+A vertical needs something to work against, and getting that wrong is the most
+common vertical-antenna disappointment.
+
+> **Where should the radial wires of a ground-mounted vertical antenna system be
+> placed?**
+> **On the surface or buried a few inches below the ground.**
+
+Not elevated, for a ground-mounted vertical — on or just under the surface, and
+as many as you can manage. Radial *quantity* matters more than radial length:
+sixteen short radials outperform four long ones.
+
+> **Which of the following is a common way to adjust the feed point impedance of an
+> elevated quarter-wave ground-plane vertical antenna to be approximately 50 ohms?**
+> **Slope the radials downward**
+
+A quarter-wave ground plane with horizontal radials feeds at roughly 30 ohms.
+Sloping the radials down raises it toward 50, matching coax directly. This is why
+commercial ground planes have drooping radials — it is impedance matching, not
+mechanical convenience.
+
+## Horizontal versus vertical
+
+> **Which of the following is an advantage of using a horizontally polarized as
+> compared to a vertically polarized HF antenna?**
+> **Lower ground losses**
+
+A vertical drives current into the ground system, and soil is a mediocre
+conductor; those losses are unavoidable without an extensive radial field. A
+horizontal antenna at reasonable height couples to ground far less.
+
+The trade-off: a vertical is omnidirectional, physically compact, and radiates at
+low angles even at modest height, which suits a small lot.
+
+## The random wire warning
+
+> **What is a characteristic of a random-wire HF antenna connected directly to
+> the transmitter?**
+> **Station equipment may carry significant RF current.**
+
+An end-fed wire with no counterpoise uses your station — chassis, power leads,
+coax shields, mains earth — as the missing half of the antenna. The consequences
+are real: RF in the audio, interference to everything nearby, RF burns from
+touching a microphone, and unpredictable tuning.
+
+The fix is a proper counterpoise or an antenna designed to be end-fed with its own
+matching transformer. Not more tuner.
+
+## Check yourself
+
+1. What length dipole for 7.150 MHz?
+2. Your dipole is 20 feet up on 40 metres. Which way does it favour?
+3. Your ground-mounted vertical works poorly. Radials elevated or on the ground?
+
+&#x3C;details>
+&#x3C;summary>Answers&#x3C;/summary>
+
+1. 468 / 7.15 = **65.5 feet**, then trim.
+2. **Nowhere in particular.** Twenty feet is well under a half wavelength on 40
+   metres (66 feet), so the azimuthal pattern is almost omnidirectional — and most
+   of the radiation goes up.
+3. **On the surface or a few inches below**, and as many as you can manage. Count
+   matters more than length.
+
+&#x3C;/details></span></article><section class="mt-12" aria-labelledby="teaches-heading"><h2 id="teaches-heading" class="text-lg font-semibold tracking-tight">What this lesson adds to the graph</h2><ul class="mt-3 flex flex-wrap gap-2"><li><a href="/radiocert/glossary/#dipole-length" class="chip no-underline"><span style="color: var(--ink-muted)">formula</span> Half-wave dipole length</a></li><li><a href="/radiocert/glossary/#monopole-length" class="chip no-underline"><span style="color: var(--ink-muted)">formula</span> Quarter-wave monopole length</a></li></ul></section><section class="mt-10" aria-labelledby="questions-heading"><h2 id="questions-heading" class="text-lg font-semibold tracking-tight">Pool questions this lesson answers</h2><p class="mt-1 text-sm" style="color: var(--ink-2)">12 questions from 2023-2027 General (Element 3). Drill them in <a href="/radiocert/practice/?pool=gen-2023&amp;objectives=G9B">targeted practice</a>.</p><p class="mt-2 font-mono text-xs" style="color: var(--ink-muted)">G9B01 · G9B02 · G9B03 · G9B04 · G9B05 · G9B06 · G9B07 · G9B08 · G9B09 · G9B10 · G9B11 · G9B12</p></section><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">pool</span> G9B</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><a href="/radiocert/lessons/amateur-general/antennas/01-feed-lines-and-swr/" data-lesson-nav="prev" class="card-surface flex-1 px-4 py-3 no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Previous</span><span class="font-medium">Feed Lines and SWR, Computed</span></a><a href="/radiocert/lessons/amateur-general/antennas/03-directional-antennas/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Directional Antennas</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="amateur-general/antennas/02-dipoles-and-verticals" data-lesson-title="Dipoles and Verticals" data-lesson-track="amateur-general" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#antenna-gain">Antenna Gain</a></li><li><a href="/radiocert/glossary/#wavelength-frequency">Wavelength from frequency</a></li></ul></section><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>
