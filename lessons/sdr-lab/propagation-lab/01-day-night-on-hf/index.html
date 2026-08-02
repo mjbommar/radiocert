@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Watching the Bands Open and Close · Radio Certification Study System</title><meta name="description" content="Turn the propagation module's claims into your own observations: D-layer absorption at dawn, the grey-line peak, and the MUF falling after sunset."><meta name="color-scheme" content="light dark"><link rel="icon" href="/radiocert/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/radiocert/manifest.webmanifest"><meta name="theme-color" content="#2a78d6"><script>
+      // Applied before first paint so a chosen theme never flashes.
+      const stored = localStorage.getItem('radiocert-theme');
+      if (stored === 'light' || stored === 'dark') {
+        document.documentElement.dataset.theme = stored;
+      }
+    </script><link rel="stylesheet" href="/radiocert/_astro/Base.CSo9k9aq.css"><style>.lesson-audio[data-astro-cid-oafqbnff]{align-items:center;gap:.5rem;display:flex}.lesson-audio-full[data-astro-cid-oafqbnff]{border:1px solid var(--rule);background:var(--surface-2,transparent);border-radius:.5rem;padding:.6rem .75rem}.la-play[data-astro-cid-oafqbnff]{border:1px solid var(--rule);color:var(--accent);cursor:pointer;background:0 0;border-radius:999px;align-items:center;gap:.4rem;padding:.3rem .55rem;line-height:1;display:inline-flex}.la-play[data-astro-cid-oafqbnff]:hover{border-color:var(--accent)}.la-label[data-astro-cid-oafqbnff]{font-size:.85rem;font-weight:600}.la-body[data-astro-cid-oafqbnff]{flex:1;align-items:center;gap:.5rem;min-width:0;display:none}.lesson-audio[data-astro-cid-oafqbnff].is-active .la-body[data-astro-cid-oafqbnff],.lesson-audio-full[data-astro-cid-oafqbnff] .la-body[data-astro-cid-oafqbnff]{display:flex}.la-bar[data-astro-cid-oafqbnff]{background:var(--rule);cursor:pointer;border-radius:999px;flex:1;min-width:3rem;height:4px;position:relative}.la-fill[data-astro-cid-oafqbnff]{background:var(--accent);border-radius:999px;width:0;height:100%}.la-time[data-astro-cid-oafqbnff]{color:var(--ink-muted);white-space:nowrap;font-size:.78rem}.la-meta[data-astro-cid-oafqbnff]{gap:.35rem;margin-left:auto;display:flex}
+</style></head><body class="min-h-dvh flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-2 focus:card-surface">Skip to content</a><header class="sticky top-0 z-40 border-b backdrop-blur" style="border-color: var(--rule); background: color-mix(in srgb, var(--plane) 88%, transparent);"><div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5 sm:gap-3"><a href="/radiocert/" class="flex shrink-0 items-center gap-1.5 font-semibold tracking-tight no-underline" style="color: var(--ink)"><span aria-hidden="true">📻</span><span class="hidden sm:inline">Radio Certification Study System</span><span class="sm:hidden">Radiocert</span></a><button type="button" data-open-palette class="ml-auto flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-sm no-print" style="border-color: var(--rule); background: var(--surface); color: var(--ink-muted)" aria-keyshortcuts="Control+K Meta+K" aria-label="Search"><span aria-hidden="true">⌕</span><span class="hidden md:inline">Search</span><kbd class="kbd ml-1 hidden lg:inline-flex">⌘K</kbd></button><nav aria-label="Main" class="site-nav flex min-w-0 items-center gap-1 overflow-x-auto"><a href="/radiocert/tracks/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Tracks</a><a href="/radiocert/glossary/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Glossary</a><a href="/radiocert/practice/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Practice</a><a href="/radiocert/readiness/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Readiness</a><a href="/radiocert/graph/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Graph</a><a href="/radiocert/reference/" class="rounded-md px-2.5 py-1.5 text-sm no-underline whitespace-nowrap" style="color: var(--ink-2)">Reference</a></nav><button id="theme-toggle" type="button" class="shrink-0 rounded-md border px-2 py-1.5 text-sm" style="border-color: var(--rule); color: var(--ink-2)" aria-label="Toggle colour theme" aria-keyshortcuts="t"><span aria-hidden="true">◐</span></button></div></header><main id="main" class="mx-auto w-full flex-1 px-4 py-8 max-w-6xl"><div id="reading-progress" class="fixed top-0 left-0 z-50 h-0.5 w-0 no-print" style="background: var(--accent); transition: width 90ms linear" aria-hidden="true"></div><div class="lesson-grid"><div class="min-w-0"><nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-x-1.5 text-sm" style="color: var(--ink-muted)"><a href="/radiocert/tracks/">Tracks</a><span aria-hidden="true">/</span><a href="/radiocert/tracks/sdr-lab/">SDR Lab</a><span aria-hidden="true">/</span><span>Watching Propagation</span></nav><header class="mt-4"><h1 class="font-semibold" style="font-size: var(--step-3); line-height: 1.15">Watching the Bands Open and Close</h1><p class="mt-3 max-w-[62ch]" style="color: var(--ink-2); font-size: var(--step-1); line-height: 1.45">Turn the propagation module&#39;s claims into your own observations: D-layer absorption at dawn, the grey-line peak, and the MUF falling after sunset.</p><div class="mt-4"><div class="lesson-audio no-print lesson-audio-full" data-audio-src="https://s3.amazonaws.com/michaelbommarito.com/radiocert/audio/SL-propagation-lab-01.gemini-us-solo.mp3" data-audio-key="SL-propagation-lab-01" data-audio-seconds="469" data-astro-cid-oafqbnff><button type="button" class="la-play" aria-label="Play Watching the Bands Open and Close" data-astro-cid-oafqbnff><svg class="la-icon-play" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" data-astro-cid-oafqbnff><path d="M4 2.5v11l9-5.5-9-5.5z" fill="currentColor" data-astro-cid-oafqbnff></path></svg><svg class="la-icon-pause" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" hidden data-astro-cid-oafqbnff><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor" data-astro-cid-oafqbnff></path></svg><span class="la-label" data-astro-cid-oafqbnff>Listen</span></button><div class="la-body" data-astro-cid-oafqbnff><div class="la-bar" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="469" aria-valuenow="0" data-astro-cid-oafqbnff><div class="la-fill" data-astro-cid-oafqbnff></div></div><span class="la-time tabular-nums" data-astro-cid-oafqbnff>7:49</span></div><div class="la-meta" data-astro-cid-oafqbnff><a class="chip chip-quiet" href="https://s3.amazonaws.com/michaelbommarito.com/radiocert/audio/SL-propagation-lab-01.gemini-us-solo.vtt" download data-astro-cid-oafqbnff>transcript</a></div></div><script type="module">var e=null,t=null,n=e=>`${Math.floor(e/60)}:${String(Math.floor(e%60)).padStart(2,`0`)}`;function r(e,t,r){let i=e.querySelector(`.la-fill`),a=e.querySelector(`.la-time`),o=e.querySelector(`.la-bar`);i&&r&&(i.style.width=`${t/r*100}%`),a&&(a.textContent=r?`${n(t)} / ${n(r)}`:n(t)),o?.setAttribute(`aria-valuenow`,String(Math.floor(t)))}function i(e,t){e.classList.toggle(`is-active`,t),e.querySelector(`.la-icon-play`).hidden=t,e.querySelector(`.la-icon-pause`).hidden=!t;let n=e.querySelector(`.la-label`);n&&(n.textContent=t?`Pause`:`Listen`)}function a(n){let a=n.dataset.audioSrc,o=`radiocert-audio:${n.dataset.audioKey}`,s=Number(n.dataset.audioSeconds||0);n.querySelector(`.la-play`).addEventListener(`click`,()=>{if(t===n&&e&&!e.paused){e.pause();return}if(t&&t!==n&&i(t,!1),e||=new Audio,e.src!==a){e.src=a;let t=Number(localStorage.getItem(o)||0);t>5&&t<s-5&&(e.currentTime=t)}t=n,e.ontimeupdate=()=>{r(n,e.currentTime,e.duration||s),e.currentTime>5&&localStorage.setItem(o,String(e.currentTime))},e.onended=()=>{localStorage.removeItem(o),i(n,!1)},e.onpause=()=>i(n,!1),e.onplay=()=>i(n,!0),e.play()}),n.querySelector(`.la-bar`).addEventListener(`click`,r=>{if(t!==n||!e)return;let i=r.currentTarget.getBoundingClientRect(),a=(r.clientX-i.left)/i.width;e.currentTime=a*(e.duration||s)});let c=Number(localStorage.getItem(o)||0);c>5&&(n.classList.add(`is-active`),r(n,c,s))}document.querySelectorAll(`.lesson-audio`).forEach(a);</script></div><div class="mt-4 flex flex-wrap items-center gap-1.5"><span class="chip chip-accent">12 min read</span><span class="chip chip-quiet">Propagation</span><span class="chip chip-quiet">core</span><span class="chip chip-quiet" style="color: var(--color-warn)">Draft</span></div></header><aside class="card-surface mt-4 px-4 py-3 text-sm"><h2 class="text-xs font-semibold uppercase tracking-wide" style="color: var(--ink-muted)">Hardware</h2><ul class="mt-1.5 space-y-1"><li><strong>RTL-SDR with HF coverage (direct-sampling dongle or an upconverter)</strong><span class="chip ml-2">optional</span><span class="block" style="color: var(--ink-2)">Without it: A WebSDR is arguably better for this lab — you can compare receivers on different continents at the same instant, which no single station can do.</span></li><li><strong>A wire antenna of any kind for HF</strong><span class="chip ml-2">optional</span><span class="block" style="color: var(--ink-2)">Without it: Not needed on a WebSDR.</span></li></ul></aside><article id="lesson-body" class="prose-lesson mt-10"><h2 id="the-claim-you-are-testing">The claim you are testing</h2>
+<p>The propagation lessons assert that <strong>the D region absorbs the lower HF bands
+during daylight and vanishes at night</strong>, and that <strong>the MUF falls after sunset</strong>.
+Both are testable in one day, with one receiver, using signals that transmit
+continuously.</p>
+<p>The observation is worth more than the reading, because propagation is the one
+part of the syllabus where the textbook answer and your own experience will
+eventually disagree — and you need to know which to trust.</p>
+<h2 id="the-instrument-wwv-and-wwvh">The instrument: WWV and WWVH</h2>
+<p><strong>15 CFR 200.107</strong> is the authority for what NIST actually transmits, and it is
+worth being precise because the details make the experiment work:</p>
+<ul>
+<li><strong>WWV</strong>, Fort Collins, Colorado — <strong>2.5, 5, 10, 15, and 20 MHz</strong>.</li>
+<li><strong>WWVH</strong>, Kauai, Hawaii — <strong>2.5, 5, 10, and 15 MHz</strong>.</li>
+</ul>
+<p>Continuous, at known powers, from known locations. That is a purpose-built
+propagation experiment: five frequencies, two well-separated paths, always on.</p>
+<p>You will see 25 MHz mentioned. <strong>It is experimental</strong> — not listed in the
+regulation, switched off and on over the years — so treat it as a bonus rather
+than part of the protocol.</p>
+<p><strong>Distinguishing the two stations matters</strong>, because on 5, 10, and 15 MHz you may
+be hearing either or both. §200.107(b) gives you the discriminator for free:
+<strong>WWVH announces the time at 15 seconds before the minute with a female voice;
+WWV at 7.5 seconds before, with a male voice.</strong> Two different paths, resolvable
+by ear, on one frequency.</p>
+<p>Tune each frequency in turn and note the signal-to-noise ratio and which station
+you are hearing. You are measuring path versus frequency, and if you are in the
+continental US the Colorado and Hawaii paths will not behave alike.</p>
+<h2 id="the-protocol">The protocol</h2>
+<p>Do this on one day. It takes five minutes at each of four times.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>When</th><th>What to expect</th></tr></thead><tbody><tr><td><strong>Local noon</strong></td><td>15 and 20 MHz strong; 2.5 and 5 MHz weak or absent</td></tr><tr><td><strong>Sunset</strong></td><td>the low bands rising as the D region decays</td></tr><tr><td><strong>Two hours after dark</strong></td><td>5 MHz strong, 20 MHz weak or gone</td></tr><tr><td><strong>Local midnight</strong></td><td>2.5 and 5 MHz best; the high bands closed</td></tr></tbody></table>
+<p>Record the SNR for each frequency at each time. Four columns, five rows.</p>
+<p><strong>What the table shows you</strong> is the D region turning on and off. It absorbs in
+proportion to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><msup><mi>f</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">1/f^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>, so it attacks 2.5 MHz forty times harder than 15 MHz.
+During the day the low bands are unusable over distance; within an hour of
+sunset they open.</p>
+<p>And the high bands do the opposite, for a different reason: with no sunlight the
+F region recombines, ionisation falls, and the <strong>MUF drops</strong> until 20 MHz will no
+longer refract back.</p>
+<h2 id="the-grey-line">The grey line</h2>
+<p>Around sunrise and sunset there is a window — often twenty minutes, sometimes an
+hour — when the low bands are dramatically better than either the day or night
+figure.</p>
+<p>The <strong>D region decays much faster than the F region</strong>. For a while you have F
+region ionisation still supporting long paths with no D region left to absorb
+them. That is the grey-line enhancement, and it is the strongest single-day
+propagation effect you can observe.</p>
+<p><strong>Watch for it deliberately.</strong> Tune 5 MHz twenty minutes before your local
+sunrise and listen for ten minutes past it.</p>
+<h2 id="scaling-up-with-wspr">Scaling up with WSPR</h2>
+<p>One receiver sees one path. The <strong>WSPR network</strong> sees thousands.</p>
+<ol>
+<li>Open <code>wsprnet.org</code> and query the last hour on 20 metres.</li>
+<li>Repeat for 40 and 80 metres.</li>
+<li>Look at where the reported paths are, relative to the terminator.</li>
+</ol>
+<p>You will see the same physics at continental scale: 80 metre paths clustered in
+darkness, 20 metre paths in daylight, and a dense band of reports along the grey
+line. Every one of those spots is a real decode by a real receiver, which makes
+this the largest continuously running propagation experiment in existence — and
+it is free to query.</p>
+<p><strong>Then run one yourself.</strong> A receive-only WSPR station is an SDR, an antenna, and
+<code>WSJT-X</code> in WSPR mode with “upload spots” enabled. Your station joins the map,
+and your own data appears in the same query.</p>
+<h2 id="comparing-indices-to-observation">Comparing indices to observation</h2>
+<p>Once you have a day of your own data, check it against the space-weather numbers
+for that day — solar flux, A and K indices, and Bz from the Extra propagation
+lesson.</p>
+<p>The correlations are real but loose, and finding out how loose is the point. A
+high solar flux figure does not guarantee an open band; a K index of 5 does not
+close every path. Learning where the indices predict well and where they do not
+is what separates reading the numbers from using them.</p>
+<h2 id="check-yourself">Check yourself</h2>
+<ol>
+<li>Why is 5 MHz weak at noon and strong at midnight, while 20 MHz does the
+reverse?</li>
+<li>What causes the grey-line enhancement?</li>
+<li>You want to know whether 20 metres is open to Japan right now, without
+transmitting. What do you do?</li>
+<li>You are hearing a time station on 10 MHz and want to know whether it is the
+Colorado path or the Hawaii path. How do you tell, without moving the dial?</li>
+</ol>
+<details>
+<summary>Answers</summary>
+<ol>
+<li><strong>5 MHz</strong> is absorbed by the <strong>D region</strong>, which exists only in daylight.
+<strong>20 MHz</strong> passes through the D region but needs a high enough <strong>MUF</strong>, which
+requires the F region ionisation that daylight produces.</li>
+<li>The <strong>D region decays faster than the F region</strong> after sunset, leaving F
+region refraction with no absorption beneath it.</li>
+<li>Query <strong>WSPRnet</strong> or the <strong>Reverse Beacon Network</strong> for recent spots on that
+path — or run a receive-only WSPR station and watch what decodes.</li>
+<li><strong>Wait for the minute.</strong> <strong>WWVH</strong> (Hawaii) announces at <strong>15 seconds</strong> before
+the minute in a <strong>female</strong> voice; <strong>WWV</strong> (Colorado) at <strong>7.5 seconds</strong> in a
+<strong>male</strong> voice. Hearing both means both paths are open at once.</li>
+</ol>
+</details></article><section class="mt-10" aria-labelledby="citations-heading"><h2 id="citations-heading" class="text-lg font-semibold tracking-tight">Sources</h2><ul class="mt-2 space-y-1 text-sm" style="color: var(--ink-2)"><li><span class="chip">cfr</span> 15 CFR 200.107<span> — WWV/WWVH frequencies and announcements</span><span style="color: var(--ink-muted)"> (verified 2026-07-30)</span></li><li><span class="chip">source</span> cfr-15-200</li></ul></section><nav class="mt-12 flex flex-wrap items-stretch justify-between gap-3" aria-label="Lesson navigation"><span class="flex-1"></span><a href="/radiocert/lessons/sdr-lab/propagation-lab/02-a-satellite-pass/" data-lesson-nav="next" class="card-surface flex-1 px-4 py-3 text-right no-underline" style="color: var(--ink)"><span class="block text-xs uppercase tracking-wide" style="color: var(--ink-muted)">Next</span><span class="font-medium">Doppler and the Shape of a Satellite Pass</span></a></nav></div><aside class="lesson-aside no-print" aria-label="Lesson contents"><div class="lesson-aside-inner"><button id="read-toggle" type="button" class="btn mb-6 w-full" data-lesson-id="sdr-lab/propagation-lab/01-day-night-on-hf" data-lesson-title="Watching the Bands Open and Close" data-lesson-track="sdr-lab" aria-pressed="false"><span data-read-icon aria-hidden="true">○</span><span data-read-label>Mark as read</span></button><section class="mb-6"><h2 class="eyebrow">Assumes you hold</h2><ul class="mt-2 space-y-1 text-sm"><li><a href="/radiocert/glossary/#frequency">Frequency</a></li></ul></section><nav aria-labelledby="toc-heading" id="toc"><h2 id="toc-heading" class="eyebrow">On this page</h2><ol class="mt-2 space-y-0.5 text-sm"><li><a href="#the-claim-you-are-testing" class="toc-link" data-depth="2">The claim you are testing</a></li><li><a href="#the-instrument-wwv-and-wwvh" class="toc-link" data-depth="2">The instrument: WWV and WWVH</a></li><li><a href="#the-protocol" class="toc-link" data-depth="2">The protocol</a></li><li><a href="#the-grey-line" class="toc-link" data-depth="2">The grey line</a></li><li><a href="#scaling-up-with-wspr" class="toc-link" data-depth="2">Scaling up with WSPR</a></li><li><a href="#comparing-indices-to-observation" class="toc-link" data-depth="2">Comparing indices to observation</a></li><li><a href="#check-yourself" class="toc-link" data-depth="2">Check yourself</a></li></ol></nav><p class="mt-6 text-sm"><a href="#main" class="no-underline" style="color: var(--ink-muted)">Back to top ↑</a></p></div></aside></div></main><footer class="border-t" style="border-color: var(--rule)"><div class="mx-auto max-w-6xl px-4 py-6 text-sm" style="color: var(--ink-muted)"><p>Study material derived from primary sources: NCVEC question pools published under 47 CFR 97.523, and regulation text from eCFR. Nothing here is legal advice or an official FCC or FAA publication.</p><p class="mt-2"><a href="/radiocert/about/">About &amp; credits</a> ·<a href="/radiocert/reference/sources/">Sources and provenance</a> ·<a href="/radiocert/reference/bibliography/">Bibliography</a> ·<a href="/radiocert/reference/licences/">Licences</a> ·<a href="/radiocert/reference/">Reference tables</a></p><p class="mt-2">Examination questions are released into the public domain by the<a href="https://www.ncvec.org/index.php/amateur-question-pools">NCVEC Question Pool Committee</a>. With thanks to them, and to<a href="/radiocert/about/">everyone else this is built on</a>.</p></div></footer><script>(function(){const SW_URL = "/radiocert/sw.js";
+const SW_SCOPE = "/radiocert/";
+
+      const toggle = document.getElementById('theme-toggle');
+      toggle?.addEventListener('click', () => {
+        const root = document.documentElement;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.dataset.theme || (prefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem('radiocert-theme', next);
+      });
+
+      if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+        addEventListener('load', () => navigator.serviceWorker.register(SW_URL, { scope: SW_SCOPE }).catch(() => {}));
+      }
+    })();</script><div id="palette" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="palette-label"><div id="palette-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[8vh] w-[min(40rem,calc(100vw-2rem))]"><div class="overflow-hidden rounded-xl border" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><label id="palette-label" class="sr-only" for="palette-input">Search lessons, glossary, and objectives</label><div class="flex items-center gap-2 border-b px-3.5 py-2.5" style="border-color: var(--rule)"><span aria-hidden="true" style="color: var(--ink-muted)">⌕</span><input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Search lessons, terms, formulas, objectives…" class="w-full bg-transparent outline-none" style="color: var(--ink); font-size: var(--step-0)"><kbd class="kbd">Esc</kbd></div><ul id="palette-list" role="listbox" aria-labelledby="palette-label" class="max-h-[min(26rem,60vh)] overflow-y-auto py-1.5"></ul><div class="flex items-center gap-3 border-t px-3.5 py-2 text-xs" style="border-color: var(--rule); color: var(--ink-muted)"><span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> move</span><span><kbd class="kbd">↵</kbd> open</span><span class="ml-auto"><kbd class="kbd">?</kbd> all shortcuts</span></div></div></div></div><div id="shortcuts" class="fixed inset-0 z-[60] hidden no-print" role="dialog" aria-modal="true" aria-labelledby="shortcuts-label"><div id="shortcuts-scrim" class="absolute inset-0" style="background: rgb(0 0 0 / 0.32)"></div><div class="relative mx-auto mt-[12vh] w-[min(30rem,calc(100vw-2rem))]"><div class="rounded-xl border p-5" style="border-color: var(--rule-strong); background: var(--surface); box-shadow: var(--shadow-pop)"><h2 id="shortcuts-label" class="font-semibold" style="font-size: var(--step-1)">Keyboard shortcuts</h2><dl class="mt-4 space-y-2 text-sm"><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">/</kbd></dt><dd style="color: var(--ink-2)">Search everything</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Go to tracks</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">l</kbd></dt><dd style="color: var(--ink-2)">Go to glossary</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">p</kbd></dt><dd style="color: var(--ink-2)">Go to practice</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">e</kbd></dt><dd style="color: var(--ink-2)">Go to readiness</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">r</kbd></dt><dd style="color: var(--ink-2)">Go to reference</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">g</kbd> <kbd class="kbd">g</kbd></dt><dd style="color: var(--ink-2)">Go to graph explorer</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">j</kbd> <kbd class="kbd">k</kbd></dt><dd style="color: var(--ink-2)">Previous / next lesson</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">t</kbd></dt><dd style="color: var(--ink-2)">Toggle light and dark</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">1</kbd>–<kbd class="kbd">4</kbd></dt><dd style="color: var(--ink-2)">Answer, during a practice run</dd></div><div class="flex items-baseline gap-3"><dt class="w-28 shrink-0"><kbd class="kbd">?</kbd></dt><dd style="color: var(--ink-2)">This list</dd></div></dl><button type="button" class="btn mt-5 w-full" data-close-shortcuts>Close</button></div></div></div><script type="module" src="/radiocert/_astro/CommandPalette.astro_astro_type_script_index_0_lang.CDo_niHE.js"></script></body></html><script type="module">var e=[...document.querySelectorAll(`.toc-link`)],t=document.getElementById(`reading-progress`),n=document.getElementById(`lesson-body`);if(e.length){let t=e.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e),n=()=>{let n=window.scrollY+window.innerHeight*.25,r=t[0];for(let e of t)e.offsetTop<=n&&(r=e);for(let t of e)r&&decodeURIComponent(t.hash.slice(1))===r.id?t.setAttribute(`aria-current`,`true`):t.removeAttribute(`aria-current`)};n(),addEventListener(`scroll`,n,{passive:!0}),addEventListener(`resize`,n,{passive:!0})}if(t&&n){let e=()=>{let e=n.offsetTop,r=n.offsetHeight-window.innerHeight*.5,i=window.scrollY-e,a=r>0?Math.min(1,Math.max(0,i/r)):0;t.style.width=`${(a*100).toFixed(2)}%`};e(),addEventListener(`scroll`,e,{passive:!0}),addEventListener(`resize`,e,{passive:!0})}</script><script type="module" src="/radiocert/_astro/_...slug_.astro_astro_type_script_index_1_lang.xlFAtqLq.js"></script>

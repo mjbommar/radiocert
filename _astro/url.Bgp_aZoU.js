@@ -1,0 +1,1 @@
+var e=`/radiocert/`.replace(/\/+$/,``);function t(t){return/^[a-z]+:/i.test(t)||t.startsWith(`//`)?t:`${e}${t.startsWith(`/`)?t:`/${t}`}`}export{t};

@@ -1,0 +1,19 @@
+{
+  "name": "Radio Certification Study System",
+  "short_name": "RadioCert",
+  "description": "Self-study courseware for FCC and FAA radio certifications",
+  "start_url": "/radiocert/",
+  "scope": "/radiocert/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fcfcfb",
+  "theme_color": "#2a78d6",
+  "icons": [
+    {
+      "src": "/radiocert/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

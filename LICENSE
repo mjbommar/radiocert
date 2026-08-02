@@ -1,0 +1,83 @@
+This repository contains material under three different terms. Which applies
+depends on what you are looking at.
+
+================================================================================
+1. PROJECT CODE — MIT License
+================================================================================
+
+Applies to: scripts/, site/, figures/src/, Makefile, and all configuration.
+
+Copyright (c) 2026 Michael Bommarito
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+2. AUTHORED PROSE AND KNOWLEDGE GRAPH — CC BY 4.0
+================================================================================
+
+Applies to: content/, graph/nodes/, graph/edges/, docs/.
+
+Licensed under the Creative Commons Attribution 4.0 International License.
+You may share and adapt this material for any purpose, including commercially,
+provided you give appropriate credit and indicate if changes were made.
+
+Full text: https://creativecommons.org/licenses/by/4.0/
+
+================================================================================
+3. THIRD-PARTY SOURCE MATERIAL — not ours to license
+================================================================================
+
+Applies to: everything under data/, and any question or regulation text
+reproduced in content/ or on the site.
+
+  * Amateur radio examination questions are produced by the Question Pool
+    Committee of the National Conference of Volunteer Examiner Coordinators,
+    which releases each pool into the PUBLIC DOMAIN by explicit statement on
+    its release page — for example, "The NCVEC Question Pool Committee hereby
+    releases into public domain the 2024-2028 Element 4 Extra Class Question
+    Pool." Separately, 47 CFR 97.523 requires each pool to be published before
+    it is used. Questions are reproduced verbatim because a paraphrase would
+    defeat their purpose as study material. The pool diagrams are published on
+    the same release pages, under the same statement, as that pool's graphics.
+    NCVEC is not affiliated with this project and does not endorse it.
+
+  * Code of Federal Regulations text, FCC public notices, and FAA and NIST
+    publications are works of the United States Government and are not subject
+    to copyright protection in the United States (17 U.S.C. 105).
+
+  * Manufacturer datasheets (Belden, Times Microwave) are consulted but NOT
+    redistributed. Only the measured values are used, and facts are not
+    copyrightable. The documents are fetched to a gitignored directory for
+    verification and never ship with the site.
+
+  * Paywalled standards (ASTM F3411, F3586) are cited for what they specify
+    and never quoted.
+
+Provenance for every source document — URL, hash, retrieval date, and the
+basis on which it is stored — is recorded in data/sources/MANIFEST.yaml.
+Third-party software notices are in THIRD-PARTY-NOTICES.md.
+
+================================================================================
+DISCLAIMER
+================================================================================
+
+This is study material. It is not legal advice, and it is not an official
+publication of the FCC, the FAA, the NCVEC, the ARRL, or any other body. The
+regulation as published governs. Verify anything that matters against the
+primary source before acting on it.

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mjbommar.github.io/radiocert/sitemap-index.xml
